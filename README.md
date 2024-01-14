@@ -36,14 +36,8 @@ git clone https://github.com/Janitor01/presale-frontend.git
 2. **Install Dependencies**:
 cd presale-frontend
 npm install
-
-markdown
-Copy code
 3. **Run the Application**:
 npm start
-
-markdown
-Copy code
 Access at `http://localhost:3000`.
 
 ## Usage
