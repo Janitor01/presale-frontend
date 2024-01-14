@@ -114,7 +114,7 @@ export const ConnectButton: FC<ConnectButtonProps> = () => {
 
   // Account Menu & Disconnect Button
   return (
-    <div className="flex select-none flex-wrap items-stretch justify-center gap-4">
+    <div className="flex select-none items-stretch justify-center gap-2">
       {/* Account Name, Address, and AZERO.ID-Domain (if assigned) */}
       <DropdownMenu>
         <DropdownMenuTrigger

@@ -1,5 +1,4 @@
 import { SubstrateDeployment } from '@scio-labs/use-inkathon'
-
 import { env } from '@/config/environment'
 
 /**
@@ -8,6 +7,7 @@ import { env } from '@/config/environment'
  */
 export enum ContractIds {
   Greeter = 'greeter',
+  bugbite = 'bugbite', // Add your contract here
 }
 
 export const getDeployments = async (): Promise<SubstrateDeployment[]> => {

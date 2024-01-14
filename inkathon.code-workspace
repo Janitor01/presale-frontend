@@ -26,6 +26,7 @@
       "statusBarItem.hoverBackground": "#ac8bff",
       "statusBarItem.remoteBackground": "#8758ff",
       "statusBarItem.remoteForeground": "#e7e7e7"
-    }
+    },
+    "rust-analyzer.linkedProjects": [".\\Cargo.toml"]
   }
 }

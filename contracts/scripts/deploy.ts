@@ -3,28 +3,22 @@ import { initPolkadotJs } from '@/utils/initPolkadotJs'
 import { writeContractAddresses } from '@/utils/writeContractAddresses'
 import { deployContract } from '@scio-labs/use-inkathon/helpers'
 
-/**
- * Script that deploys the greeter contract and writes its address to a file.
- *
- * Parameters:
- *  - `DIR`: Directory to read contract build artifacts & write addresses to (optional, defaults to `./deployments`)
- *  - `CHAIN`: Chain ID (optional, defaults to `development`)
- *
- * Example usage:
- *  - `pnpm run deploy`
- *  - `CHAIN=alephzero-testnet pnpm run deploy`
- */
 const main = async () => {
   const initParams = await initPolkadotJs()
   const { api, chain, account } = initParams
 
   // Deploy greeter contract
-  const { abi, wasm } = await getDeploymentData('greeter')
-  const greeter = await deployContract(api, account, abi, wasm, 'default', [])
+  const greeterData = await getDeploymentData('greeter')
+  const greeter = await deployContract(api, account, greeterData.abi, greeterData.wasm, 'default', [])
+
+  // Deploy bugbite contract
+  const bugbiteData = await getDeploymentData('bugbite')
+  const bugbite = await deployContract(api, account, bugbiteData.abi, bugbiteData.wasm, 'default', [])
 
   // Write contract addresses to `{contract}/{network}.ts` file(s)
   await writeContractAddresses(chain.network, {
     greeter,
+    bugbite, // Add your contract here
   })
 }
 
