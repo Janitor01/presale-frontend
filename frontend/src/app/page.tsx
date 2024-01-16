@@ -8,6 +8,7 @@ import { ChainInfo } from '@/components/web3/chain-info'
 import { PresaleInfo } from '@/components/web3/presale-info'
 import { Tokenomics } from '@/components/web3/tokenomics'
 import { Logo } from '@/components/web3/logo'
+import { MyTimer } from '@/components/web3/timer'
 import { ConnectButton } from '@/components/web3/connect-button'
 import { GreeterContractInteractions } from '@/components/web3/greeter-contract-interactions'
 import { BugBiteContractInteractions } from '@/components/web3/bugbite-contract-interaction'
@@ -23,6 +24,7 @@ export default function HomePage() {
     toast.error(error.message)
   }, [error])
   const { contract, address: contractAddress } = useRegisteredContract(ContractIds.bugbite)
+  
 
   return (
     <>
@@ -32,6 +34,7 @@ export default function HomePage() {
       <div className=" container flex grow flex-col items-center justify-center">
         {/* Title */}
         <HomePageTitle />
+        <MyTimer />
 
         <div className="flex w-full flex-wrap items-start justify-center gap-4">
           {/* Greeter Read/Write Contract Interactions */}

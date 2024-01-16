@@ -19,9 +19,11 @@ export const HomeTopBar: FC = () => {
 
         @media (max-width: 600px) {
           .top-bar {
+            
             top: 1%; // Adjusted for mobile
             right: 1.5%; // Adjusted for mobile
             left: 1.5%;
+            
           }
         }
       `}</style>
