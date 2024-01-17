@@ -103,7 +103,9 @@ export const PresaleInfo: FC = () => {
   useEffect(() => {
     const tokensSoldNumber = parseFloat(tokensSold);
     const totalPresaleTokensNumber = parseFloat(totalPresaleTokens);
-    const progressPercentage = totalPresaleTokensNumber > 0 ? (tokensSoldNumber / totalPresaleTokensNumber) * 100 : 0;
+    console.log("tokens sold" , tokensSoldNumber)
+    console.log("total presale tokens", totalPresaleTokensNumber)
+    const progressPercentage = totalPresaleTokensNumber > 0 ? (tokensSoldNumber / (totalPresaleTokensNumber + tokensSoldNumber)) * 100 : 0;
   
     setTimeout(() => {
       setProgressWidth(progressPercentage);
