@@ -19,26 +19,25 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'ink!athon Boilerplate',
-  description: 'Full-Stack DApp Boilerplate for ink! Smart Contracts',
+  title: 'I OWE YOU',
+  description: '$IOU Presale Platform',
   metadataBase: new URL(env.url),
   robots: env.isProduction ? 'all' : 'noindex,nofollow',
   openGraph: {
     type: 'website',
     locale: 'en',
     url: env.url,
-    siteName: 'ink!athon Boilerplate',
+    siteName: '$IOU',
     images: [
       {
-        url: '/images/inkathon-og-banner.jpg',
-        width: 1280,
-        height: 640,
+        url: '/images/cover.jpg',
+        
       },
     ],
   },
   twitter: {
-    site: '@scio_xyz',
-    creator: '@scio_xyz',
+    site: '@OfficePartyNFT',
+    creator: '@OfficePartyNFT',
     card: 'summary_large_image',
   },
 }
