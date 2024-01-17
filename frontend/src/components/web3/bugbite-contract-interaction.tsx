@@ -5,13 +5,12 @@ import { FC, useEffect, useState, useCallback } from 'react'
 import { ContractIds } from '@/deployments/deployments'
 import {
   contractQuery,
-  decodeOutput,
   useInkathon,
   useRegisteredContract,
 } from '@scio-labs/use-inkathon'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-
+import { BN, bnToBn } from '@polkadot/util'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Form, FormControl, FormItem, FormLabel } from '@/components/ui/form'
@@ -26,35 +25,41 @@ export const BugBiteContractInteractions: FC = () => {
   const [tokenAmount, setTokenAmount] = useState<string>()
   const [isBuying, setIsBuying] = useState<boolean>(false)
   const { register, handleSubmit, watch } = useForm<BuyTokenValues>()
-  const form = useForm<BuyTokenValues>()
-
+  const form = useForm<BuyTokenValues>({
+    defaultValues: {
+      amountToSpend: '0'
+    }
+  });
+  
+  
   const amountToSpend = watch('amountToSpend')
+  
 
   const [pricePerToken, setPricePerToken] = useState<string>('0');
 
   const fetchPricePerToken = useCallback(async () => {
     if (!api || !contract) return;
-
+  
+    let priceOutput = 'Unavailable'; // Default value
+    let pricePerToken = '0'; // Declare outside try...catch
+  
     try {
       const priceResult = await contractQuery(api, '', contract, 'get_price');
-
-
+  
       if (priceResult.output) {
-        const extractedPrice = priceResult.output.toString().slice(6, -1);
-        const priceBigInt = Number(extractedPrice);
-        const priceOutput = (priceBigInt / 1e12).toString();
-
-        console.log(" Price Output:", priceOutput);
-
-        setPricePerToken(priceOutput);
-      } else {
-        setPricePerToken('Unavailable');
-      }
+        const hexString = priceResult.output.toString();       
+        const formattedHexString = hexString.slice(6, -1); 
+        const pricePerTokenBigInt = Number(formattedHexString) / 1e12;
+        pricePerToken = Number(pricePerTokenBigInt).toFixed(4); // Set value here
+      } 
     } catch (error) {
       console.error('Error fetching price per token:', error);
-      setPricePerToken('Error');
+      priceOutput = 'Error';
     }
+  
+    setPricePerToken(pricePerToken); // Update state
   }, [api, contract]);
+
 
   // useEffect for initial fetch of price per token
   useEffect(() => {
@@ -65,36 +70,39 @@ export const BugBiteContractInteractions: FC = () => {
   useEffect(() => {
     if (amountToSpend) {
       const amountInAzero = parseFloat(amountToSpend);
-      const tokens = amountInAzero * parseFloat(pricePerToken); // Convert pricePerToken to number
+      const numericPricePerToken = parseFloat(pricePerToken);
+      const tokens = ((amountInAzero / numericPricePerToken));
       setTokenAmount(tokens.toString());
     }
   }, [amountToSpend, pricePerToken]);
 
   const buyTokens = async ({ amountToSpend }: BuyTokenValues) => {
-    if (!activeAccount || !contract || !activeSigner || !api) {
-        toast.error('Wallet not connected. Try again…');
-        return;
+    if (!activeAccount || !contract || !activeSigner || !api || !amountToSpend || tokenAmount === undefined) {
+      toast.error('Wallet not connected or invalid input. Try again…');
+      return;
     }
-
+  
     setIsBuying(true);
     try {
-        const spendAmountInSmallestUnit = parseFloat(amountToSpend) * 1e12; 
-
-        const numericPricePerToken = parseFloat(pricePerToken);
-
-        const costInAzero = spendAmountInSmallestUnit * numericPricePerToken; 
-
-        await contractTxWithToast(api, activeAccount.address, contract, 'buy_token', { value: costInAzero }, [
-            spendAmountInSmallestUnit, 
-        ]);
+      // Convert to strings to avoid floating point arithmetic issues
+      const amountToSpendString = (parseFloat(amountToSpend) * 1e12).toString();
+      const tokenAmountString = (parseFloat(tokenAmount) * 1e12).toString(); // Adjust if token also uses decimals
+  
+      // Convert strings to BigNumber
+      const amountToSpendInSmallestUnit = new BN(amountToSpendString);
+      const tokenAmountInContractUnit = new BN(tokenAmountString);
+  
+      await contractTxWithToast(api, activeAccount.address, contract, 'buy_token', { value: amountToSpendInSmallestUnit }, [
+        tokenAmountInContractUnit,
+      ]);
     } catch (e) {
-        console.error(e);
-        toast.error('Error while trying to buy tokens. Try again…');
+      console.error(e);
+      toast.error('Error while trying to buy tokens. Try again…');
     } finally {
-        setIsBuying(false);
+      setIsBuying(false);
     }
-};
-
+  };
+  
 
 
 
@@ -110,11 +118,11 @@ export const BugBiteContractInteractions: FC = () => {
               <FormItem>
                 <FormLabel className="text-base">PAY: $AZERO</FormLabel>
                 <FormControl>
-                  <Input {...register('amountToSpend')} type="number" min="0" step="any" />
+                  <Input {...register('amountToSpend')} type="number" min="0" step="any"/>
                 </FormControl>
               </FormItem>
               <FormItem>
-                <FormLabel className="text-base">GET: $BUG</FormLabel>
+                <FormLabel className="text-base">GET: $IOU</FormLabel>
                 <FormControl>
                   <Input value={tokenAmount} disabled={true} />
                 </FormControl>

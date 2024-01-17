@@ -11,6 +11,9 @@ import telegram from 'public/icons/telegram.svg'
 import twitter from 'public/icons/twitter.svg'
 import internet from 'public/icons/internet.svg'
 import { cn } from '@/utils/cn'
+import { BN } from '@polkadot/util';
+import { formatBalance } from './formatBalance'
+
 
 interface StyledIconLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
@@ -40,53 +43,61 @@ export const PresaleInfo: FC = () => {
     </Link>
   )
 
-  // Define the fetchTokenData function using useCallback to memoize it
+
   const fetchTokenData = useCallback(async () => {
     if (!api || !contract) return
 
     try {
-      const soldResult = await contractQuery(api, '', contract, 'get_tokens_sold')
-      const totalResult = await contractQuery(api, '', contract, 'get_total_presale_tokens')
-
-      let soldOutput, totalOutput
-
+      const soldResult = await contractQuery(api, '', contract, 'get_tokens_sold');
+      const totalResult = await contractQuery(api, '', contract, 'get_total_presale_tokens');
+      
+      let soldOutput, totalOutput;
       if (soldResult.output) {
-        const extractedSold = soldResult.output.toString().slice(6, -1) // Removes first six and last one characters
-        const soldBigInt = BigInt(extractedSold)
-        soldOutput = (soldBigInt / BigInt(1e12)).toString() // Convert to BigInt, divide, and then to String
-      } else {
-        soldOutput = 'Unavailable'
-      }
+        
+        try {
+          const hexString = soldResult.output.toString();
+          const formattedHexString = hexString.slice(9, -2); 
+          const soldValue = new BN(formattedHexString, 16);
+          soldOutput = formatBalance(api, soldValue, { withUnit: false }).replace(/,/g, '');
 
+        } catch (error) {
+          console.error("Error parsing sold result:", error);
+          soldOutput = 'Error';
+        }
+      } else {
+        soldOutput = 'Unavailable';
+      }
+      
       if (totalResult.output) {
-        const extractedTotal = totalResult.output.toString().slice(6, -1) // Removes first six and last one characters
-        const totalBigInt = BigInt(extractedTotal)
-        totalOutput = (totalBigInt / BigInt(1e12)).toString() // Convert to BigInt, divide, and then to String
+        const hexString = totalResult.output.toString(); // Get the full string
+        const formattedHexString = hexString.slice(9, -2); // Adjust slicing as needed
+        const totalValue = new BN(formattedHexString, 16); // Convert to BN
+        totalOutput = formatBalance(api, totalValue, { withUnit: false }).replace(/,/g, ''); // Remove commas
+       
       } else {
-        totalOutput = 'Unavailable'
+        totalOutput = 'Unavailable';
       }
+    setTokensSold(soldOutput);
+    setTotalPresaleTokens(totalOutput);
+} catch (error) {
+    console.error('Error fetching token data:', error);
+    setTokensSold('Error');
+    setTotalPresaleTokens('Error');
+}
+  }, [api, contract]) 
 
-      setTokensSold(soldOutput)
-      setTotalPresaleTokens(totalOutput)
-    } catch (error) {
-      console.error('Error fetching token data:', error)
-      setTokensSold('Error')
-      setTotalPresaleTokens('Error')
-    }
-  }, [api, contract]) // Dependencies
 
-  // useEffect for initial fetch and setting up the interval
   useEffect(() => {
-    fetchTokenData() // Initial fetch
+    fetchTokenData() 
 
     const intervalId = setInterval(() => {
-      fetchTokenData() // This function will be called every 10 seconds
-    }, 10000) // 10 seconds interval
+      fetchTokenData()
+    }, 10000) 
 
-    return () => clearInterval(intervalId) // Cleanup interval on unmount
-  }, [fetchTokenData]) // Pass fetchTokenData as a dependency
+    return () => clearInterval(intervalId) 
+  }, [fetchTokenData])
 
-  // Trigger the animation after state update
+
   useEffect(() => {
     const tokensSoldNumber = parseFloat(tokensSold)
     const totalPresaleTokensNumber = parseFloat(totalPresaleTokens)
@@ -131,7 +142,7 @@ export const PresaleInfo: FC = () => {
             </div>
             <div className="text-sm leading-7">
               Total Supply:
-              <strong className="float-right ml-6">1000</strong>
+              <strong className="float-right ml-6">1000000000</strong>
             </div>
           </CardContent>
         </Card>

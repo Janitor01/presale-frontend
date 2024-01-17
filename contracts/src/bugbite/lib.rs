@@ -132,12 +132,12 @@ mod bugbite {
             let mut token: contract_ref!(PSP22) = self.presale_asset.into();
             let to_balance_before = token.balance_of(from);
             token
-                .transfer(from, price, Vec::<u8>::new())
+                .transfer(from, amount_to_purchase, Vec::<u8>::new())
                 .map_err(|_| Error::TransferFailed)?;
             let to_balance_after = token.balance_of(from);
 
             let new_balance = to_balance_after - to_balance_before;
-            if new_balance != price {
+            if new_balance != amount_to_purchase {
                 return Err(Error::TransferFailed);
             }
 

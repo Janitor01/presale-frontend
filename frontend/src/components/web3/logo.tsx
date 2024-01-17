@@ -1,11 +1,8 @@
 'use client'
 
-import { FC, useEffect, useState, useCallback } from 'react'
+import { FC } from 'react'
 import Image from 'next/image'
-import { ContractIds } from '@/deployments/deployments'
-import { contractQuery, useInkathon, useRegisteredContract } from '@scio-labs/use-inkathon'
 import { Card, CardContent } from '@/components/ui/card'
-import { Doughnut } from 'react-chartjs-2';
 import 'chart.js/auto';
 import IOULOGO from 'public/images/IOULOGO.png'
 
@@ -39,7 +36,7 @@ export const Logo: FC = () => {
                     <div className="text-center mb-5">
                     <h2 className="text-center font-mono text-gray-400 mt-4">Price per $IOU</h2>
                     <br />
-                    <strong >0.0001 $AZERO</strong>
+                    <strong >$ 0.0001</strong>
                     </div>
                     </div>
                 </CardContent>

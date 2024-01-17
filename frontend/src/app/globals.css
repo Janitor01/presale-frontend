@@ -120,3 +120,27 @@
     height 0.1s ease 0.4s,
     opacity 0.1s ease 0.4s; /* Delayed transition when not hovered */
 }
+
+.timer-container {
+  font-family: 'Courier New', monospace;
+  width: 100%; /* Fixed width */
+  text-align: center; /* Center-align the text */
+  font-size: 35px; /* Adjust font size as needed */
+  overflow: hidden; /* Hide overflow */
+}
+
+@media (max-width: 768px) {
+  .timer-container {
+    font-size: 35px; /* Smaller font size for smaller screens */
+  }
+}
+
+.centered-timer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* Add other styles if needed */
+}
