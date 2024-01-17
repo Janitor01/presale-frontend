@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: '$IOU',
     images: [
       {
-        url: '/images/cover.jpg',
+        url: '/images/IOULOGO.png',
         
       },
     ],
