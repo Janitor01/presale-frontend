@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 import { ContractIds } from '@/deployments/deployments'
 import { HomePageTitle } from '@/app/components/home-page-title'
-import { ChainInfo } from '@/components/web3/chain-info'
 import { PresaleInfo } from '@/components/web3/presale-info'
 import { Tokenomics } from '@/components/web3/tokenomics'
 import { Logo } from '@/components/web3/logo'
@@ -31,6 +30,7 @@ export default function HomePage() {
   
   return (
     <>
+    
     <div className='relative mt-2 '>
       <HomeTopBar />
     </div>
@@ -61,12 +61,14 @@ export default function HomePage() {
       </p>
 
       <Draggable>
-        <div className='mb-5'>
+        <div className='draggable-container mb-5'>
           <MyTimer />
         </div>
       </Draggable>
-    </div>
       
+    
+    </div>
+    
     </>
   )
 }

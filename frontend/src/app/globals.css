@@ -131,7 +131,7 @@
 
 @media (max-width: 768px) {
   .timer-container {
-    font-size: 35px; /* Smaller font size for smaller screens */
+    font-size: 35px;
   }
 }
 
@@ -141,6 +141,49 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
 
-  /* Add other styles if needed */
+@keyframes spin3d {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.hover-spin-3d {
+  perspective: 1000px; /* Adjust as needed for depth effect */
+  overflow: hidden;
+  margin: 8px;
+  width: 100%;
+}
+
+.hover-spin-3d img {
+  transition: transform 0.3s;
+  box-sizing: border-box;
+  max-width: 100%;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-out;
+  transform: rotateY(0deg);
+}
+
+.hover-spin-3d:hover img {
+  animation: spin3d 2s infinite linear;
+  transform: rotateY(360deg);
+}
+
+.draggable-container {
+  position: fixed; /* Fixed position */
+  transform: translateX(-50%); /* Adjust for centering */
+  /* Other styling as needed */
+}
+
+@media (max-width: 600px) {
+  /* Adjust breakpoint as needed for mobile */
+  .draggable-container {
+    bottom: 50%; /* Position higher for mobile */
+    /* Any other mobile specific adjustments */
+  }
 }

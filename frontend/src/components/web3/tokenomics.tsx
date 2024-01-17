@@ -11,7 +11,7 @@ export const Tokenomics: FC = () => {
   const data = {
     datasets: [
       {
-        data: [27.5, 27.5, 10, 10, 25],
+        data: [25, 30, 10, 10, 25],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

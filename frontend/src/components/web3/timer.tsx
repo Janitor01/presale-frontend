@@ -23,7 +23,7 @@ export const MyTimer: FC = () => {
     <div className="max-w-[22rem] grow flex-col gap-4  ">
   <br />
   <Card>
-    <CardContent className="shadow-lg  pb-3  flex-auto ">
+    <CardContent className="shadow-2xl  pb-3  flex-auto ">
     <h2 className="mt-4 text-center font-mono text-gray-400">Drag me daddy</h2>
       <div className="timer-container">
         {days.toString().padStart(2, '0')}:

@@ -17,9 +17,13 @@ export const Logo: FC = () => {
             <br />
             <Card>
                 <CardContent className="pb-3 pt-6 grid grid-cols-2 gap-4">
-                    <div className="w-full h-full flex justify-center items-center col-span-1 row-span-2">
+                    <div className="w-full h-full  flex justify-center items-center col-span-1 row-span-2">
                     {/* Content for top left */}
-                    <div><Image src={IOULOGO} priority height={212} alt="Github Repository" /></div>
+                      <div>
+                        <figure className="hover-spin-3d">
+                          <Image src={IOULOGO} priority height={212} alt="3D Spinning Image" />
+                        </figure>
+                      </div>
                     </div>
                     
                     <div className="w-full h-full flex justify-center items-center col-span-1">

@@ -16,6 +16,7 @@ import { cn } from '@/utils/cn'
 export const HomePageTitle: FC = () => {
   const title = '$IOU PRESALE'
   const desc = 'Brought to you by Office Party'
+  const seco = 'Testnet Version'
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleText = () => setIsExpanded(!isExpanded);
 
@@ -30,7 +31,9 @@ export const HomePageTitle: FC = () => {
         
 
         {/* Tagline & Lincks */}
-        <p className="mb-2 mt-4 text-gray-400">{desc}</p>
+        <p className="mb-0 mt-4 text-gray-400">{desc}</p>
+        <p className="mb-2 mt-0 text-gray-400">{seco}</p>
+        
 
         <div
           className={`text-container ${isExpanded ? 'expanded' : ''} flex flex-col items-center text-center font-mono overflow-hidden`}
@@ -40,8 +43,11 @@ export const HomePageTitle: FC = () => {
           <p>
           
         $IOU, short for I Owe You, is an engaging meme token presented by Office Party, exclusively designed for the Aleph Zero ecosystem. 
-        In line with the ethos of Office Party, $IOU boasts a commitment to 100% community engagement, humorously coupled with a promise of zero utility. 
-        
+        In line with the ethos of Office Party, $IOU boasts a commitment to 100% community engagement, humorously coupled with a promise of 100% zero utility. 
+        <br />
+        <br />
+        To ensure your security, always use a burner wallet when connecting to decentralized applications (dApps) online. This practice keeps your main assets safe while you explore and enjoy the lively world of $IOU and Office Party. 
+        Dive into this adventure with a light heart and a focus on community interaction. Have fun and embrace the essence of $IOU!
         
         </p>
         </div>

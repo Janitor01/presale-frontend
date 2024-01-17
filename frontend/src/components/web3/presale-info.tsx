@@ -10,6 +10,7 @@ import discord from 'public/icons/discord.svg'
 import telegram from 'public/icons/telegram.svg'
 import twitter from 'public/icons/twitter.svg'
 import internet from 'public/icons/internet.svg'
+import paper from 'public/icons/paper.svg'
 import { cn } from '@/utils/cn'
 import { BN } from '@polkadot/util';
 import { formatBalance } from './formatBalance'
@@ -30,6 +31,7 @@ export const PresaleInfo: FC = () => {
   const discordHref = 'https://discord.gg/uQ4BFH4KG7'
   const telegramHref = 'https://t.me/OfficeParty'
   const internetHref = 'https://op2.app'
+  const paperHref = 'https://docs.google.com/document/d/e/2PACX-1vRH3t1afrEHwAEYtqJJLUUv1RrMZOUzdqPOHM7ov2Gp9Iad7H6idyAZ94Dhl34u8_jEJuw1frXatPtk/pub'
 
   const StyledIconLink: React.FC<StyledIconLinkProps> = ({ className, children, ...rest }) => (
     <Link
@@ -99,15 +101,14 @@ export const PresaleInfo: FC = () => {
 
 
   useEffect(() => {
-    const tokensSoldNumber = parseFloat(tokensSold)
-    const totalPresaleTokensNumber = parseFloat(totalPresaleTokens)
-    const originalTotalPresaleTokens = tokensSoldNumber + totalPresaleTokensNumber
-    const progressPercentage = originalTotalPresaleTokens > 0 ? (tokensSoldNumber / originalTotalPresaleTokens) * 100 : 0
-
+    const tokensSoldNumber = parseFloat(tokensSold);
+    const totalPresaleTokensNumber = parseFloat(totalPresaleTokens);
+    const progressPercentage = totalPresaleTokensNumber > 0 ? (tokensSoldNumber / totalPresaleTokensNumber) * 100 : 0;
+  
     setTimeout(() => {
-      setProgressWidth(progressPercentage)
-    }, 500)
-  }, [tokensSold, totalPresaleTokens])
+      setProgressWidth(progressPercentage);
+    }, 500);
+  }, [tokensSold, totalPresaleTokens]);
 
   return (
     <>
@@ -165,6 +166,9 @@ export const PresaleInfo: FC = () => {
           </StyledIconLink>
           <StyledIconLink href={internetHref} target="_blank">
             <Image src={internet} priority height={32} alt="Website" />
+          </StyledIconLink>
+          <StyledIconLink href={paperHref} target="_blank">
+            <Image src={paper} priority height={32} alt="Website" />
           </StyledIconLink>
         </div>
             </div>
