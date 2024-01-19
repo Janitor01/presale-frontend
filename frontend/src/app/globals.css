@@ -187,3 +187,7 @@
     /* Any other mobile specific adjustments */
   }
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
