@@ -35,7 +35,7 @@ export default function HomePage() {
       <HomeTopBar />
     </div>
 
-    <div className=" container flex grow flex-col items-center justify-center">
+    <div className="mt-10 container flex grow flex-col items-center justify-center">
       {/* Title */}
       <HomePageTitle />          
           
