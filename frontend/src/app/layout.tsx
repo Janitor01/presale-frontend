@@ -31,13 +31,14 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/images/IOULOGO.png',
-        
+        width: 512,
+        height: 512,
       },
     ],
   },
   twitter: {
-    site: '@OfficePartyNFT',
-    creator: '@OfficePartyNFT',
+    site: '@officepartynft',
+    creator: '@officepartynft',
     card: 'summary_large_image',
   },
 }
