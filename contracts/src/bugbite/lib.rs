@@ -14,6 +14,7 @@ mod bugbite {
         paused: bool,
         total_presale_tokens: Balance,
         tokens_sold: Balance,
+        buying_cap: Balance,
     }
 
     #[ink(event)]
@@ -36,6 +37,7 @@ mod bugbite {
         TransferFailed,
         NotOwner,
         ContractPaused,
+        PurchaseExceedsCap,
     }
 
     impl Token {
@@ -44,6 +46,7 @@ mod bugbite {
             price_per_token: Balance,
             presale_token: AccountId,
             total_presale: Balance,
+            buying_cap: Balance,
         ) -> Self {
             assert!(price_per_token > 0);
             let caller = Self::env().caller();
@@ -54,6 +57,7 @@ mod bugbite {
                 paused: false,
                 total_presale_tokens: total_presale,
                 tokens_sold: 0,
+                buying_cap,
             }
         }
 
@@ -111,11 +115,29 @@ mod bugbite {
             self.price_per_token
         }
 
+        #[ink(message)]
+        pub fn set_buying_cap(&mut self, new_cap: Balance) -> Result<(), Error> {
+            self.only_owner()?;
+            self.buying_cap = new_cap;
+            Ok(())
+        }
+
+        #[ink(message)]
+        pub fn get_buying_cap(&self) -> u128 {
+            self.buying_cap
+        }
+
+        //Amount_to_purchase is the total amount of tokens the user wants to buy
+        //Price is the amount of $AZERO the user has to pay
         #[ink(message, payable)]
         pub fn buy_token(&mut self, amount_to_purchase: Balance) -> Result<Balance, Error> {
             self.ensure_not_paused()?;
             if amount_to_purchase == 0 {
                 return Err(Error::InsufficientBalance);
+            }
+
+            if amount_to_purchase > self.buying_cap {
+                return Err(Error::PurchaseExceedsCap);
             }
 
             let from = self.env().caller();

@@ -1,6 +1,6 @@
 {
   "source": {
-    "hash": "0x629105f92dadcc30101e3a2865992aa61f334c586d83effa9702ead33b032de8",
+    "hash": "0xeb334cab7d92a027e3fdcc4f96064c01c19261b32e6c309ce194fbd4ddadbfeb",
     "language": "ink! 4.3.0",
     "compiler": "rustc 1.77.0-nightly",
     "build_info": {
@@ -44,6 +44,15 @@
           },
           {
             "label": "total_presale",
+            "type": {
+              "displayName": [
+                "Balance"
+              ],
+              "type": 3
+            }
+          },
+          {
+            "label": "buying_cap",
             "type": {
               "displayName": [
                 "Balance"
@@ -297,6 +306,48 @@
       {
         "args": [
           {
+            "label": "new_cap",
+            "type": {
+              "displayName": [
+                "Balance"
+              ],
+              "type": 3
+            }
+          }
+        ],
+        "default": false,
+        "docs": [],
+        "label": "set_buying_cap",
+        "mutates": true,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 9
+        },
+        "selector": "0xe2dfca10"
+      },
+      {
+        "args": [],
+        "default": false,
+        "docs": [],
+        "label": "get_buying_cap",
+        "mutates": false,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 8
+        },
+        "selector": "0x1c7a0403"
+      },
+      {
+        "args": [
+          {
             "label": "amount_to_purchase",
             "type": {
               "displayName": [
@@ -446,6 +497,15 @@
                 }
               },
               "name": "tokens_sold"
+            },
+            {
+              "layout": {
+                "leaf": {
+                  "key": "0x00000000",
+                  "ty": 3
+                }
+              },
+              "name": "buying_cap"
             }
           ],
           "name": "Token"
@@ -730,6 +790,10 @@
               {
                 "index": 4,
                 "name": "ContractPaused"
+              },
+              {
+                "index": 5,
+                "name": "PurchaseExceedsCap"
               }
             ]
           }
