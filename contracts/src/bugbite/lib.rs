@@ -94,6 +94,7 @@ mod bugbite {
             self.owner
         }
 
+        // Sets the price of ONE token in $AZERO. Inputing 1 will mean 1 token = 1 $AZERO. 10 means that 1 token = 10 $AZERO.
         #[ink(message)]
         pub fn set_price_per_token(&mut self, new_price: Balance) -> Result<(), Error> {
             self.only_owner()?;

@@ -29,7 +29,7 @@ export const PresaleInfo: FC = () => {
   const [progressWidth, setProgressWidth] = useState(0)
   const twitterHref = 'https://twitter.com/OfficePartyNFT'
   const discordHref = 'https://discord.gg/uQ4BFH4KG7'
-  const telegramHref = 'https://t.me/OfficeParty'
+  const telegramHref = 'https://t.me/iou_meme'
   const internetHref = 'https://op2.app'
   const paperHref = 'https://docs.google.com/document/d/e/2PACX-1vRH3t1afrEHwAEYtqJJLUUv1RrMZOUzdqPOHM7ov2Gp9Iad7H6idyAZ94Dhl34u8_jEJuw1frXatPtk/pub'
 
