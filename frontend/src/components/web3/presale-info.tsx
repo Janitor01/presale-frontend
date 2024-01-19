@@ -103,14 +103,13 @@ export const PresaleInfo: FC = () => {
   useEffect(() => {
     const tokensSoldNumber = parseFloat(tokensSold);
     const totalPresaleTokensNumber = parseFloat(totalPresaleTokens);
-    console.log("tokens sold" , tokensSoldNumber)
-    console.log("total presale tokens", totalPresaleTokensNumber)
-    const progressPercentage = totalPresaleTokensNumber > 0 ? (tokensSoldNumber / (totalPresaleTokensNumber + tokensSoldNumber)) * 100 : 0;
+    const progressPercentage = (tokensSoldNumber / (tokensSoldNumber + totalPresaleTokensNumber)) * 100;
   
     setTimeout(() => {
       setProgressWidth(progressPercentage);
     }, 500);
   }, [tokensSold, totalPresaleTokens]);
+ 
 
   return (
     <>
@@ -122,12 +121,13 @@ export const PresaleInfo: FC = () => {
             <div className="text-sm leading-7">
           
               <div className="w-full bg-gray-200 rounded-full h-8 dark:bg-gray-700 overflow-hidden">
-                <div
-                  className="bg-blue-600 h-8 rounded-full progress-bar flex items-center justify-center text-white font-bold"
-                  style={{ width: `${progressWidth}%`, borderRadius: '9999px' }}
-                >
-                  {Math.round(progressWidth)}%
-                </div>
+              <div
+                className="bg-blue-600 h-8 rounded-full progress-bar flex items-center justify-center text-white font-bold"
+                style={{ width: `${progressWidth}%`, borderRadius: '9999px' }}
+              >
+                {progressWidth >= 100 ? "SOLD OUT" : `${Math.round(progressWidth)}%`}
+              </div>
+
               </div>
             </div>
             <br></br>
