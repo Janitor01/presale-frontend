@@ -4,7 +4,18 @@
 mod bugbite {
     use ink::contract_ref;
     use ink::prelude::vec::Vec;
+    use ink::storage::Mapping;
     use psp22::PSP22;
+
+    #[derive(Clone, Debug, scale::Encode, scale::Decode)]
+    #[cfg_attr(
+        feature = "std",
+        derive(::scale_info::TypeInfo, ink::storage::traits::StorageLayout)
+    )]
+    pub struct Purchase {
+        buyer: AccountId,
+        amount_purchased: Balance,
+    }
 
     #[ink(storage)]
     pub struct Token {
@@ -15,6 +26,8 @@ mod bugbite {
         total_presale_tokens: Balance,
         tokens_sold: Balance,
         buying_cap: Balance,
+        all_sales: Vec<Purchase>,
+        all_sales_map: Mapping<AccountId, Purchase>,
     }
 
     #[ink(event)]
@@ -58,6 +71,8 @@ mod bugbite {
                 total_presale_tokens: total_presale,
                 tokens_sold: 0,
                 buying_cap,
+                all_sales: Vec::new(),
+                all_sales_map: Mapping::new(),
             }
         }
 
@@ -178,7 +193,34 @@ mod bugbite {
                 price,
             });
 
+            let purchase = Purchase {
+                buyer: from,
+                amount_purchased: amount_to_purchase,
+            };
+            self.all_sales.push(purchase.clone());
+            self.all_sales_map.insert(from, &purchase);
+
             Ok(new_balance)
+        }
+
+        #[ink(message)]
+        pub fn get_sale(&self, index: u128) -> Option<Purchase> {
+            self.all_sales.get(index as usize).cloned()
+        }
+
+        #[ink(message)]
+        pub fn get_sale_length(&self) -> u128 {
+            self.all_sales.len() as u128
+        }
+
+        #[ink(message)]
+        pub fn get_sale_for_user(&self, account: AccountId) -> Option<Purchase> {
+            self.all_sales_map.get(account)
+        }
+
+        #[ink(message)]
+        pub fn get_all_sales(&self) -> Vec<Purchase> {
+            self.all_sales.clone()
         }
 
         #[ink(message)]
