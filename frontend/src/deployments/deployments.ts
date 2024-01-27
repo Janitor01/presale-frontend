@@ -21,7 +21,8 @@ export const getDeployments = async (): Promise<SubstrateDeployment[]> => {
       const { address } = await import(
         `@inkathon/contracts/deployments/${contractId}/${networkId}.ts`
       )
-
+      console.log("contract ID:", contractId)
+      console.log("contract ID:", networkId)
       deployments.push({ contractId, networkId, abi, address })
     }
   }
