@@ -26,6 +26,7 @@ The $IOU Presale Token Contract Frontend is an interface for a blockchain-based 
 2. **Run the Application**:
 
    `cd iou-presale-frontend`
+
    `pnpm install`
 
 3. **Run the Application**:
