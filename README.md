@@ -21,16 +21,16 @@ The $IOU Presale Token Contract Frontend is an interface for a blockchain-based 
 
 1. **Clone the Repository**:
 
-   git clone https://github.com/Janitor01/iou-presale-frontend.git
+   `git clone https://github.com/Janitor01/iou-presale-frontend.git`
 
 2. **Run the Application**:
 
-   cd iou-presale-frontend
-   pnpm install
+   `cd iou-presale-frontend`
+   `pnpm install`
 
 3. **Run the Application**:
 
-   pnpm run dev
+   `pnpm run dev`
 
 Access at `http://localhost:3000`.
 
