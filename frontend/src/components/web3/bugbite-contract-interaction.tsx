@@ -19,7 +19,10 @@ import { contractTxWithToast } from '@/utils/contract-tx-with-toast'
 
 type BuyTokenValues = { amountToSpend: string }
 
+const contractAddress = '5CErsJ8okcTy61s9niV5YekdiyNnFCLpLzNWJAeScMobYQr1'
+
 export const BugBiteContractInteractions: FC = () => {
+  
   const { api, activeAccount, activeSigner } = useInkathon()
   const { contract, address: contractAddress } = useRegisteredContract(ContractIds.bugbite)
   const [tokenAmount, setTokenAmount] = useState<string>()
