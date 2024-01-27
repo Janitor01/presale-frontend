@@ -31,7 +31,7 @@ export const MyTimer: FC = () => {
         {minutes.toString().padStart(2, '0')}:
         {seconds.toString().padStart(2, '0')}
       </div>
-      <h2 className="text-center font-mono text-gray-400">im coming</h2>
+      <h2 className="text-center font-mono text-gray-400">im coming... 12PM UTC 28th Jan</h2>
     </CardContent>
   </Card>
 </div>
