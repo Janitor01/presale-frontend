@@ -10,11 +10,8 @@ import { Logo } from '@/components/web3/logo'
 import { BugBiteContractInteractions } from '@/components/web3/bugbite-contract-interaction'
 import { HomeTopBar } from './components/home-top-bar'
 import { useInkathon, useRegisteredContract } from '@scio-labs/use-inkathon'
-import dynamic from 'next/dynamic';
-import Draggable from "react-draggable";
 
 
-const MyTimer = dynamic(() => import('@/components/web3/timer'), { ssr: false });
 
 
 export default function HomePage() {
@@ -57,15 +54,9 @@ export default function HomePage() {
       {/* Contract Address */}
       <p className="text-center font-mono text-xs text-gray-600 mt-4 mb-4">
           Contract Address: <br />
-          
-          {contract ? contractAddress : 'Loading…'}
+          5GYgJ1xBPtyUwbPVnDfbg9uRGWdGrcaM6y1TaftUMoxUHQh5
+          {/* {contract ? contractAddress : 'Loading…'}*/}
       </p>
-
-      <Draggable>
-        <div className='draggable-container mb-5'>
-          <MyTimer />
-        </div>
-      </Draggable>
       
     
     </div>
