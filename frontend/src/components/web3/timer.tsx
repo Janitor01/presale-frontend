@@ -25,12 +25,7 @@ export const MyTimer: FC = () => {
   <Card>
     <CardContent className="shadow-2xl  pb-3  flex-auto ">
     <h2 className="mt-4 text-center font-mono text-gray-400">Drag me daddy</h2>
-      <div className="timer-container">
-        {days.toString().padStart(2, '0')}:
-        {hours.toString().padStart(2, '0')}:
-        {minutes.toString().padStart(2, '0')}:
-        {seconds.toString().padStart(2, '0')}
-      </div>
+    
       <h2 className="text-center font-mono text-gray-400">im coming... <br />12PM UTC 28th Jan</h2>
     </CardContent>
   </Card>
