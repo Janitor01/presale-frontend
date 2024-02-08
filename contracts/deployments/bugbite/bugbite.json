@@ -1,6 +1,6 @@
 {
   "source": {
-    "hash": "0x027012117e35819d3e5614afe91d680cc817cedaad6f0d7ec1bcf18348daf0b6",
+    "hash": "0x64ae44bd2c081b0d0aaa966dbd9075f73a87acc89b033223cc67982aa145bf41",
     "language": "ink! 4.3.0",
     "compiler": "rustc 1.77.0-nightly",
     "build_info": {
@@ -59,6 +59,15 @@
               ],
               "type": 3
             }
+          },
+          {
+            "label": "max_whitelist_purchase",
+            "type": {
+              "displayName": [
+                "Balance"
+              ],
+              "type": 3
+            }
           }
         ],
         "default": false,
@@ -93,26 +102,26 @@
         "displayName": [
           "BlockNumber"
         ],
-        "type": 22
+        "type": 23
       },
       "chainExtension": {
         "displayName": [
           "ChainExtension"
         ],
-        "type": 23
+        "type": 24
       },
       "hash": {
         "displayName": [
           "Hash"
         ],
-        "type": 20
+        "type": 21
       },
       "maxEventTopics": 4,
       "timestamp": {
         "displayName": [
           "Timestamp"
         ],
-        "type": 21
+        "type": 22
       }
     },
     "events": [
@@ -348,6 +357,110 @@
       {
         "args": [
           {
+            "label": "new_max",
+            "type": {
+              "displayName": [
+                "Balance"
+              ],
+              "type": 3
+            }
+          }
+        ],
+        "default": false,
+        "docs": [],
+        "label": "set_max_whitelist_purchase",
+        "mutates": true,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 11
+        },
+        "selector": "0x9f7ab808"
+      },
+      {
+        "args": [
+          {
+            "label": "account",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 0
+            }
+          }
+        ],
+        "default": false,
+        "docs": [],
+        "label": "add_to_whitelist",
+        "mutates": true,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 11
+        },
+        "selector": "0x52d6683c"
+      },
+      {
+        "args": [
+          {
+            "label": "account",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 0
+            }
+          }
+        ],
+        "default": false,
+        "docs": [],
+        "label": "remove_from_whitelist",
+        "mutates": true,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 11
+        },
+        "selector": "0xe143c7fa"
+      },
+      {
+        "args": [
+          {
+            "label": "account",
+            "type": {
+              "displayName": [
+                "AccountId"
+              ],
+              "type": 0
+            }
+          }
+        ],
+        "default": false,
+        "docs": [],
+        "label": "is_whitelisted",
+        "mutates": false,
+        "payable": false,
+        "returnType": {
+          "displayName": [
+            "ink",
+            "MessageResult"
+          ],
+          "type": 15
+        },
+        "selector": "0xe303952a"
+      },
+      {
+        "args": [
+          {
             "label": "amount_to_purchase",
             "type": {
               "displayName": [
@@ -367,7 +480,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 15
+          "type": 16
         },
         "selector": "0xbb2c6d34"
       },
@@ -393,7 +506,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 17
+          "type": 18
         },
         "selector": "0x16f88a12"
       },
@@ -435,7 +548,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 17
+          "type": 18
         },
         "selector": "0x3a685629"
       },
@@ -451,7 +564,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 19
+          "type": 20
         },
         "selector": "0xb30f542f"
       },
@@ -477,7 +590,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 15
+          "type": 16
         },
         "selector": "0xfbcfbf73"
       },
@@ -493,7 +606,7 @@
             "ink",
             "MessageResult"
           ],
-          "type": 15
+          "type": 16
         },
         "selector": "0xe3155197"
       },
@@ -632,6 +745,38 @@
                 }
               },
               "name": "all_sales_map"
+            },
+            {
+              "layout": {
+                "leaf": {
+                  "key": "0x00000000",
+                  "ty": 4
+                }
+              },
+              "name": "whitelist_enabled"
+            },
+            {
+              "layout": {
+                "leaf": {
+                  "key": "0x00000000",
+                  "ty": 3
+                }
+              },
+              "name": "max_whitelist_purchase"
+            },
+            {
+              "layout": {
+                "root": {
+                  "layout": {
+                    "leaf": {
+                      "key": "0x419df4c4",
+                      "ty": 3
+                    }
+                  },
+                  "root_key": "0x419df4c4"
+                }
+              },
+              "name": "whitelist_purchases"
             }
           ],
           "name": "Token"
@@ -956,6 +1101,10 @@
               {
                 "index": 5,
                 "name": "PurchaseExceedsCap"
+              },
+              {
+                "index": 6,
+                "name": "PurchaseExceedsWhitelistLimit"
               }
             ]
           }
@@ -1018,7 +1167,7 @@
               {
                 "fields": [
                   {
-                    "type": 16
+                    "type": 4
                   }
                 ],
                 "index": 0,
@@ -1039,7 +1188,7 @@
         "params": [
           {
             "name": "T",
-            "type": 16
+            "type": 4
           },
           {
             "name": "E",
@@ -1053,6 +1202,48 @@
     },
     {
       "id": 16,
+      "type": {
+        "def": {
+          "variant": {
+            "variants": [
+              {
+                "fields": [
+                  {
+                    "type": 17
+                  }
+                ],
+                "index": 0,
+                "name": "Ok"
+              },
+              {
+                "fields": [
+                  {
+                    "type": 9
+                  }
+                ],
+                "index": 1,
+                "name": "Err"
+              }
+            ]
+          }
+        },
+        "params": [
+          {
+            "name": "T",
+            "type": 17
+          },
+          {
+            "name": "E",
+            "type": 9
+          }
+        ],
+        "path": [
+          "Result"
+        ]
+      }
+    },
+    {
+      "id": 17,
       "type": {
         "def": {
           "variant": {
@@ -1094,7 +1285,7 @@
       }
     },
     {
-      "id": 17,
+      "id": 18,
       "type": {
         "def": {
           "variant": {
@@ -1102,7 +1293,7 @@
               {
                 "fields": [
                   {
-                    "type": 18
+                    "type": 19
                   }
                 ],
                 "index": 0,
@@ -1123,7 +1314,7 @@
         "params": [
           {
             "name": "T",
-            "type": 18
+            "type": 19
           },
           {
             "name": "E",
@@ -1136,7 +1327,7 @@
       }
     },
     {
-      "id": 18,
+      "id": 19,
       "type": {
         "def": {
           "variant": {
@@ -1169,7 +1360,7 @@
       }
     },
     {
-      "id": 19,
+      "id": 20,
       "type": {
         "def": {
           "variant": {
@@ -1211,7 +1402,7 @@
       }
     },
     {
-      "id": 20,
+      "id": 21,
       "type": {
         "def": {
           "composite": {
@@ -1231,7 +1422,7 @@
       }
     },
     {
-      "id": 21,
+      "id": 22,
       "type": {
         "def": {
           "primitive": "u64"
@@ -1239,7 +1430,7 @@
       }
     },
     {
-      "id": 22,
+      "id": 23,
       "type": {
         "def": {
           "primitive": "u32"
@@ -1247,7 +1438,7 @@
       }
     },
     {
-      "id": 23,
+      "id": 24,
       "type": {
         "def": {
           "variant": {}

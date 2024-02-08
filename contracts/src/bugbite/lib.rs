@@ -28,6 +28,9 @@ mod bugbite {
         buying_cap: Balance,
         all_sales: Vec<Purchase>,
         all_sales_map: Mapping<AccountId, Purchase>,
+        whitelist_enabled: bool,
+        max_whitelist_purchase: Balance,
+        whitelist_purchases: Mapping<AccountId, Balance>,
     }
 
     #[ink(event)]
@@ -51,6 +54,7 @@ mod bugbite {
         NotOwner,
         ContractPaused,
         PurchaseExceedsCap,
+        PurchaseExceedsWhitelistLimit,
     }
 
     impl Token {
@@ -60,6 +64,7 @@ mod bugbite {
             presale_token: AccountId,
             total_presale: Balance,
             buying_cap: Balance,
+            max_whitelist_purchase: Balance,
         ) -> Self {
             assert!(price_per_token > 0);
             let caller = Self::env().caller();
@@ -73,6 +78,9 @@ mod bugbite {
                 buying_cap,
                 all_sales: Vec::new(),
                 all_sales_map: Mapping::new(),
+                whitelist_enabled: false,
+                max_whitelist_purchase,
+                whitelist_purchases: Mapping::new(),
             }
         }
 
@@ -142,11 +150,49 @@ mod bugbite {
             self.buying_cap
         }
 
+        #[ink(message)]
+        pub fn set_max_whitelist_purchase(&mut self, new_max: Balance) -> Result<(), Error> {
+            self.only_owner()?;
+            self.max_whitelist_purchase = new_max;
+            Ok(())
+        }
+
+        #[ink(message)]
+        pub fn add_to_whitelist(&mut self, account: AccountId) -> Result<(), Error> {
+            self.only_owner()?;
+            self.whitelist_purchases.insert(&account, &0); // Initialize their purchased amount to 0
+            Ok(())
+        }
+
+        // Function to remove an address from the whitelist
+        #[ink(message)]
+        pub fn remove_from_whitelist(&mut self, account: AccountId) -> Result<(), Error> {
+            self.only_owner()?;
+            self.whitelist_purchases.remove(&account);
+            Ok(())
+        }
+
+        #[ink(message)]
+        pub fn is_whitelisted(&self, account: AccountId) -> bool {
+            self.whitelist_purchases.contains(&account)
+        }
+
         //Amount_to_purchase is the total amount of tokens the user wants to buy
         //Price is the amount of $AZERO the user has to pay
         #[ink(message, payable)]
         pub fn buy_token(&mut self, amount_to_purchase: Balance) -> Result<Balance, Error> {
             self.ensure_not_paused()?;
+            let caller = self.env().caller();
+            // If the whitelist is enabled, check the purchase limit for the caller
+            if self.whitelist_enabled {
+                let already_purchased = self.whitelist_purchases.get(&caller).unwrap_or(0);
+                if already_purchased + amount_to_purchase > self.max_whitelist_purchase {
+                    return Err(Error::PurchaseExceedsWhitelistLimit);
+                }
+                // Update the purchased amount for the caller
+                self.whitelist_purchases
+                    .insert(&caller, &(already_purchased + amount_to_purchase));
+            }
             if amount_to_purchase == 0 {
                 return Err(Error::InsufficientBalance);
             }
