@@ -15,7 +15,7 @@ import { cn } from '@/utils/cn'
 
 export const HomePageTitle: FC = () => {
   const title = '$IOU PRESALE ROUND 2'
-  const desc = 'Brought to you by Office Party'
+  const desc = 'Second times a charm'
   const seco = 'Mainnet Version'
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleText = () => setIsExpanded(!isExpanded);
