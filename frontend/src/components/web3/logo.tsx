@@ -43,7 +43,7 @@ export const Logo: FC = () => {
                     <div className="text-center mb-5">
                     <h2 className="text-center font-mono text-gray-400 mt-4">Price per $IOU</h2>
                     <br />
-                    <strong >0.0001 $AZERO</strong>
+                    <strong >0.00012 $AZERO</strong>
                     </div>
                     </div>
                 </CardContent>
