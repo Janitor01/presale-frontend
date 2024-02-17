@@ -11,7 +11,7 @@ export const Tokenomics: FC = () => {
   const data = {
     datasets: [
       {
-        data: [25, 30, 10, 10, 25],
+        data: [25, 30, 12.7, 7.3, 25],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -29,7 +29,7 @@ export const Tokenomics: FC = () => {
         borderWidth: 1,
       },
     ],
-    labels: ['Liquidity', 'Presale', 'Community Fund', 'Airdrops', 'NFT Farming'],
+    labels: ['Liquidity', 'Presale', 'Presale 2', 'Airdrops', 'NFT Farming'],
   }
 
   const options = {
