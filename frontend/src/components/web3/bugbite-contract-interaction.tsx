@@ -47,13 +47,15 @@ export const BugBiteContractInteractions: FC = () => {
   
     try {
       const priceResult = await contractQuery(api, '', contract, 'get_price');
-      console.log("Price per token:", priceResult)
+      
   
       if (priceResult.output) {
-        const hexString = priceResult.output.toString();       
+        const hexString = priceResult.output.toString();   
+        console.log("Price per token hex:", hexString)    
         const formattedHexString = hexString.slice(6, -1); 
         const pricePerTokenBigInt = Number(formattedHexString) / 1e12;
         pricePerToken = Number(pricePerTokenBigInt).toFixed(4); // Set value here
+        console.log("Price per token:", pricePerToken)
       } 
     } catch (error) {
       console.error('Error fetching price per token:', error);
