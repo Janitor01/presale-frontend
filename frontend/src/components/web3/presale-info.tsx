@@ -47,8 +47,8 @@ export const PresaleInfo: FC = () => {
 
 
   const fetchTokenData = useCallback(async () => {
-    if (!api || !contract) return
-
+    if (!api || !contract) return;
+  
     try {
       const soldResult = await contractQuery(api, '', contract, 'get_tokens_sold');
       const totalResult = await contractQuery(api, '', contract, 'get_total_presale_tokens');
@@ -60,8 +60,9 @@ export const PresaleInfo: FC = () => {
           const hexString = soldResult.output.toString();
           const formattedHexString = hexString.slice(9, -2); 
           const soldValue = new BN(formattedHexString, 16);
-          soldOutput = formatBalance(api, soldValue, { withUnit: false }).replace(/,/g, '');
-
+          // Format sold tokens with up to two decimals without trailing zeros
+          soldOutput = parseFloat(formatBalance(api, soldValue, { withUnit: false }).replace(/,/g, '')).toFixed(2);
+  
         } catch (error) {
           console.error("Error parsing sold result:", error);
           soldOutput = 'Error';
@@ -71,22 +72,25 @@ export const PresaleInfo: FC = () => {
       }
       
       if (totalResult.output) {
-        const hexString = totalResult.output.toString(); // Get the full string
-        const formattedHexString = hexString.slice(9, -2); // Adjust slicing as needed
-        const totalValue = new BN(formattedHexString, 16); // Convert to BN
-        totalOutput = formatBalance(api, totalValue, { withUnit: false }).replace(/,/g, ''); // Remove commas
+        const hexString = totalResult.output.toString();
+        const formattedHexString = hexString.slice(9, -2);
+        const totalValue = new BN(formattedHexString, 16);
+        // Format total presale tokens similarly
+        totalOutput = parseFloat(formatBalance(api, totalValue, { withUnit: false }).replace(/,/g, '')).toFixed(2);
        
       } else {
         totalOutput = 'Unavailable';
       }
-    setTokensSold(soldOutput);
-    setTotalPresaleTokens(totalOutput);
-} catch (error) {
-    console.error('Error fetching token data:', error);
-    setTokensSold('Error');
-    setTotalPresaleTokens('Error');
-}
-  }, [api, contract]) 
+      // Convert back to number to remove unnecessary zeros and then to string for display
+      setTokensSold(parseFloat(soldOutput).toString());
+      setTotalPresaleTokens(parseFloat(totalOutput).toString());
+    } catch (error) {
+      console.error('Error fetching token data:', error);
+      setTokensSold('Error');
+      setTotalPresaleTokens('Error');
+    }
+  }, [api, contract]);
+   
 
 
   useEffect(() => {
