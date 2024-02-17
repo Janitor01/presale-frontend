@@ -19,7 +19,6 @@ import { contractTxWithToast } from '@/utils/contract-tx-with-toast'
 
 type BuyTokenValues = { amountToSpend: string }
 
-const contractAddress = '5CErsJ8okcTy61s9niV5YekdiyNnFCLpLzNWJAeScMobYQr1'
 
 export const BugBiteContractInteractions: FC = () => {
   
@@ -48,6 +47,7 @@ export const BugBiteContractInteractions: FC = () => {
   
     try {
       const priceResult = await contractQuery(api, '', contract, 'get_price');
+      console.log("Price per token:", pricePerToken)
   
       if (priceResult.output) {
         const hexString = priceResult.output.toString();       
