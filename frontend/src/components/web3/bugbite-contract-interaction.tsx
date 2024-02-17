@@ -77,7 +77,8 @@ export const BugBiteContractInteractions: FC = () => {
       const amountInAzero = parseFloat(amountToSpend);
       const numericPricePerToken = parseFloat(pricePerToken);
       const tokens = ((amountInAzero / numericPricePerToken));
-      setTokenAmount(tokens.toString());
+      const formattedTokenAmount = parseFloat(tokens.toFixed(2)).toString();
+      setTokenAmount(formattedTokenAmount);
     }
   }, [amountToSpend, pricePerToken]);
 
