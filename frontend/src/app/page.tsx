@@ -54,8 +54,8 @@ export default function HomePage() {
       {/* Contract Address */}
       <p className="text-center font-mono text-xs text-gray-600 mt-4 mb-4">
           Contract Address: <br />
-          5GYgJ1xBPtyUwbPVnDfbg9uRGWdGrcaM6y1TaftUMoxUHQh5
-          {/* {contract ? contractAddress : 'Loading…'}*/}
+          
+          {contract ? contractAddress : 'Loading…'}
       </p>
       
     
