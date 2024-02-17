@@ -54,7 +54,7 @@ export const BugBiteContractInteractions: FC = () => {
         console.log("Price per token hex:", hexString)    
         const formattedHexString = hexString.slice(6, -1); 
         const pricePerTokenBigInt = Number(formattedHexString) / 1e12;
-        pricePerToken = Number(pricePerTokenBigInt).toFixed(4); // Set value here
+        pricePerToken = Number(pricePerTokenBigInt).toFixed(5); // Set value here
         console.log("Price per token:", pricePerToken)
       } 
     } catch (error) {
