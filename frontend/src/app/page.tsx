@@ -37,10 +37,9 @@ export default function HomePage() {
       <HomePageTitle />          
           
       <div className="flex w-full flex-wrap items-start justify-center gap-4">
-        {/* Greeter Read/Write Contract Interactions 
-        <Logo />   */}
-        {/*       
-        <BugBiteContractInteractions />   */}       
+        {/* Greeter Read/Write Contract Interactions */}
+        <Logo />         
+        <BugBiteContractInteractions />          
       </div>
         
         
