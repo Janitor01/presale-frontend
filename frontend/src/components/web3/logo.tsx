@@ -29,7 +29,7 @@ export const Logo: FC = () => {
           <h3>127,000,000</h3>
           <h2 className='text-indigo-500 text-2xl'>Airdrops</h2>
           <h3>73,000,000</h3>
-          <h2 className='text-indigo-500 text-2xl'>Liquidity</h2>
+          <h2 className='text-indigo-500 text-2xl'>Farming</h2>
           <h3>250,000,000</h3>
           </div>
          
