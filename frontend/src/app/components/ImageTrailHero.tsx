@@ -205,7 +205,7 @@ const MouseImageTrail = ({
           }`,
         ],
       },
-      { type: "spring", damping: 15, stiffness: 200 }
+      { type: "spring", damping: 7, stiffness: 200 }
     );
 
     animate(
