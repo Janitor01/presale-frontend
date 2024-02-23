@@ -3,6 +3,7 @@ import React, { MouseEventHandler, ReactNode, useRef } from "react";
 import { motion } from "framer-motion";
 import { FiArrowDownCircle, FiDollarSign } from "react-icons/fi";
 import Image from "next/image";
+import IOULOGO from 'public/images/IOULOGO.png'
 
 
 export const ImageTrailHero = () => {
@@ -40,9 +41,11 @@ export const ImageTrailHero = () => {
       ]}
     >
       <section className="h-screen bg-slate-200">
+      
         <Copy />
         
         <WatermarkWrapper />
+        
       </section>
     </MouseImageTrail>
   );
@@ -75,15 +78,29 @@ const Copy = () => {
 
 const WatermarkWrapper = () => {
   return (
-    <div style={{ width: '100%', overflow: 'hidden' }}>
-      <Watermark text="$IOU is love" />
-      <Watermark text="$IOU is life" reverse />
-      <Watermark text="It's worthless" />
-      <Watermark text="Until it's not" reverse />
-      <Watermark text="It's just a meme bro" />
-      <Watermark text="no utility" reverse />
-      <Watermark text="100% Community" />
-      <Watermark text="no value, except what you give it" reverse />
+    <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
+    {/* Center your image absolutely within the relative container */}
+    <div style={{ 
+      position: 'absolute', 
+      top: '50%', 
+      left: '50%', 
+      transform: 'translate(-50%, -75%)', 
+      zIndex: 0 
+    }}>
+        <Image src={IOULOGO} width={500} height={500} objectFit="cover" alt="logo" />
+      </div>
+      
+
+      <div style={{ position: 'relative'}}>
+        <Watermark text="$IOU is love" />
+        <Watermark text="$IOU is life" reverse />
+        <Watermark text="It's worthless" />
+        <Watermark text="Until it's not" reverse />
+        <Watermark text="It's just a meme bro" />
+        <Watermark text="no utility" reverse />
+        <Watermark text="100% Community" />
+        <Watermark text="no value, except what you give it" reverse />
+      </div>
     </div>
   );
 };
