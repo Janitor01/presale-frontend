@@ -14,6 +14,8 @@ import paper from 'public/icons/paper.svg'
 import { cn } from '@/utils/cn'
 import { BN } from '@polkadot/util';
 import { formatBalance } from './formatBalance'
+import { FiCloudLightning } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 
 interface StyledIconLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
@@ -116,8 +118,10 @@ export const PresaleInfo: FC = () => {
  
 
   return (
-    <>
-      <div className="flex max-w-[22rem] grow flex-col gap-4">
+
+      <>
+      
+        {/*
         <br />
         <Card>
           <h2 className="text-center font-mono text-gray-400 mt-4">Presale Progress</h2>
@@ -152,37 +156,46 @@ export const PresaleInfo: FC = () => {
               <strong className="float-right ml-6">1000000000</strong>
             </div>
           </CardContent>
-        </Card>
-
+        </Card>*/}
         
-        <Card>
-        <h2 className="text-center font-mono text-gray-400 mt-4">Socials</h2>
-          <CardContent className="pb-5 pt-6">
-            <div className="text-sm leading-7">
-            
-            <div className="flex select-none space-x-2">
-          <StyledIconLink href={discordHref} target="_blank">
-            <Image src={discord} priority height={32} alt="Discord" />
-          </StyledIconLink>
-          <StyledIconLink href={telegramHref} target="_blank">
-            <Image src={telegram} priority height={32} alt="Telegram" />
-          </StyledIconLink>
-          <StyledIconLink href={twitterHref} target="_blank">
-            <Image src={twitter} priority height={32} alt="X" />
-          </StyledIconLink>
-          <StyledIconLink href={internetHref} target="_blank">
-            <Image src={internet} priority height={32} alt="Website" />
-          </StyledIconLink>
-          <StyledIconLink href={paperHref} target="_blank">
-            <Image src={paper} priority height={32} alt="Website" />
-          </StyledIconLink>
+      
+        <div className="group relative mx-auto w-full mb-10 max-w-sm overflow-hidden rounded-lg bg-slate-800 p-0.5 transition-all duration-500 hover:scale-[1.01] hover:bg-slate-800/50">
+          
+        <div className="relative z-10 flex flex-col items-center justify-center overflow-hidden rounded-[7px] bg-slate-900 p-8 transition-colors duration-500 group-hover:bg-slate-800">
+          {/* Flex container for icons to appear side by side */}
+          <h1 className="mb-6 max-w-4xl text-4xl font-black leading-[1.1] text-slate-200  overflow-hidden">
+            Follow us!
+          </h1>
+          <div className="flex justify-center space-x-2"> {/* Adjusted for horizontal layout */}
+            <StyledIconLink href={discordHref} target="_blank">
+              <Image src={discord} priority height={32} alt="Discord" />
+            </StyledIconLink>
+            <StyledIconLink href={telegramHref} target="_blank">
+              <Image src={telegram} priority height={32} alt="Telegram" />
+            </StyledIconLink>
+            <StyledIconLink href={twitterHref} target="_blank">
+              <Image src={twitter} priority height={32} alt="X" />
+            </StyledIconLink>
+            <StyledIconLink href={internetHref} target="_blank">
+              <Image src={internet} priority height={32} alt="Website" />
+            </StyledIconLink>
+            <StyledIconLink href={paperHref} target="_blank">
+              <Image src={paper} priority height={32} alt="Website" />
+            </StyledIconLink>
+          </div>
         </div>
-            </div>
-          </CardContent>
-        </Card>
-         
-      </div>
 
+        <motion.div
+          initial={{ rotate: "0deg" }}
+          animate={{ rotate: "360deg" }}
+          transition={{
+            repeat: Infinity,
+            duration: 3.5,
+            ease: "linear",
+          }}
+          className="absolute inset-0 z-0 bg-gradient-to-br from-indigo-200 via-indigo-200/0 to-indigo-200 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+      </div>
     </>
-  )
-}
+  );
+};

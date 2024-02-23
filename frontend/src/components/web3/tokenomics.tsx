@@ -2,7 +2,8 @@
 
 import { FC } from 'react'
 import { Doughnut } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
+import 'chart.js/auto';
+import {Chart, ArcElement} from 'chart.js'
 import { Card, CardContent } from '@/components/ui/card'
 
 export const Tokenomics: FC = () => {
@@ -27,6 +28,7 @@ export const Tokenomics: FC = () => {
           'rgba(153, 102, 255, 1)',
         ],
         borderWidth: 1,
+        
       },
     ],
     labels: ['Liquidity', 'Presale', 'Presale 2', 'Airdrops', 'NFT Farming'],
@@ -49,12 +51,12 @@ export const Tokenomics: FC = () => {
     <>
       <div className="flex max-w-[22rem] grow flex-col gap-4">
         <br />
-        <Card>
-          <h2 className="mt-4 text-center font-mono text-gray-400">Tokenomics</h2>
-          <CardContent className="pb-3 pt-6" style={{ height: 337 }}>
+        
+          
+        
             <Doughnut data={data} options={options} />
-          </CardContent>
-        </Card>
+         
+        
       </div>
     </>
   )

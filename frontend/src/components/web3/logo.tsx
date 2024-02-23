@@ -4,7 +4,8 @@ import { FC } from 'react'
 import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import 'chart.js/auto';
-import IOULOGO from 'public/images/IOULOGO.png'
+import crown from 'public/images/crown.png'
+
 
 
 
@@ -14,45 +15,24 @@ export const Logo: FC = () => {
 
   return (
       <>
-          <div className="flex max-w-[22rem] grow flex-col gap-4">
-            <br />
-            <Card>
-                <CardContent className="pb-3 pt-6 grid grid-cols-2 gap-4">
-                    <div className="w-full h-full  flex justify-center items-center col-span-1 row-span-2">
-                    {/* Content for top left */}
-           
-                      <div>
-                        <figure className="hover-spin-3d">
-                          <Image src={IOULOGO} priority height={212} alt="3D Spinning Image" />
-                        </figure>
-                      </div>
-                    
-                    </div>
-                    
-                    <div className="w-full h-full flex justify-center items-center col-span-1">
-                    {/* Content for top right */}
-                    <div className="text-center">
-                    <h2 className="text-center font-mono text-gray-400 mt-4">Market Cap</h2>
-                    <br />
-                    <strong>100k $AZERO</strong>
-                    </div>
-                    </div>
-                    
-                    <div className="w-full h-full flex justify-center items-center col-span-1">
-                    {/* Content for bottom right */}
-                    <div className="text-center mb-5">
-                    <h2 className="text-center font-mono text-gray-400 mt-4">Price per $IOU</h2>
-                    <br />
-                    <strong >0.00012 $AZERO</strong>
-                    </div>
-                    </div>
-                </CardContent>
-            </Card>
+      <div className='mt-10 max-w-[22rem] font-black'>
 
-
-
-
+      
+           <h1 className="mb-6 max-w-4xl text-4xl font-black leading-[1.1] text-slate-200  overflow-hidden">
+            TOKENOMICS <span className="text-indigo-500">$IOU</span>
+          </h1>
+          <h2 className='text-indigo-500 text-2xl'>Liquidity</h2>
+          <h3>250,000,000</h3>
+          <h2 className='text-indigo-500 text-2xl'>Presale</h2>
+          <h3>300,000,000</h3>
+          <h2 className='text-indigo-500 text-2xl'>Presale 2</h2>
+          <h3>127,000,000</h3>
+          <h2 className='text-indigo-500 text-2xl'>Airdrops</h2>
+          <h3>73,000,000</h3>
+          <h2 className='text-indigo-500 text-2xl'>Liquidity</h2>
+          <h3>250,000,000</h3>
           </div>
+         
       </>
   );
 };

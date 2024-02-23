@@ -191,3 +191,31 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* styles.module.css */
+.image-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-2%) translateY(83%);
+  width: 1500px; /* Default size */
+  height: 1500px; /* Default size */
+}
+
+@media (max-width: 600px) {
+  .image-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-25%) translateY(82%);
+    width: 1000px; /* Larger size on mobile */
+    height: 1000px; /* Larger size on mobile */
+  }
+}
+
+/* In your global.css or a relevant CSS module */
+.important-text {
+  color: text-slate-200; /* Indigo color */
+  font-weight: 900; /* Slightly less than 'font-black' but more distinct */
+  font-size: 1.1rem;
+}
