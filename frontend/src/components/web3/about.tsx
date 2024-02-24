@@ -14,7 +14,7 @@ import crown from 'public/images/crown.png'
 export const About: FC = () => {
   return (
     <>
-  <div className="mx-auto flex flex-col items-center p-4 sm:p-6 md:max-w-[50%] font-black text-slate-200">
+  <div className="mx-auto flex flex-col items-center p-4 sm:p-6 md:max-w-[50%] text-slate-200  md:text-lg">
     <h1 className="text-6xl font-black mb-6">
       ABOUT <span className="text-indigo-500">$IOU</span>
     </h1>

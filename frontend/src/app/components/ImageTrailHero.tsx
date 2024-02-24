@@ -1,5 +1,5 @@
 import { useAnimate } from "framer-motion";
-import React, { MouseEventHandler, ReactNode, useRef } from "react";
+import React, { MouseEventHandler, ReactNode, useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FiArrowDownCircle, FiDollarSign } from "react-icons/fi";
 import Image from "next/image";
@@ -77,16 +77,32 @@ const Copy = () => {
 };
 
 const WatermarkWrapper = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // 768px is a common breakpoint for mobile devices
+    };
+
+    // Check on initial load
+    checkMobile();
+
+    // Add event listener for window resizing
+    window.addEventListener('resize', checkMobile);
+
+    // Cleanup event listener
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
-    {/* Center your image absolutely within the relative container */}
-    <div style={{ 
-      position: 'absolute', 
-      top: '50%', 
-      left: '50%', 
-      transform: 'translate(-50%, -75%)', 
-      zIndex: 0 
-    }}>
+      <div style={{ 
+        position: 'absolute', 
+        top: isMobile ? '25%' : '50%', // Adjust top position for mobile
+        left: '50%', 
+        transform: `translate(-50%, ${isMobile ? '-50%' : '-75%'})`, // Adjust transform for mobile
+        zIndex: 0 
+      }}>
         <Image src={IOULOGO} width={500} height={500} objectFit="cover" alt="logo" />
       </div>
       
