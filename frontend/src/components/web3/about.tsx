@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useState } from 'react';
+import { FC, useState, ReactNode } from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import 'chart.js/auto';
@@ -8,7 +8,15 @@ import crown from 'public/images/crown.png';
 import { FiChevronDown } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
-const Question = ({ title, children, defaultOpen = false }) => {
+
+
+type QuestionProps = {
+  title: string;
+  children: ReactNode;
+  defaultOpen?: boolean;
+};
+
+const Question: FC<QuestionProps> = ({ title, children, defaultOpen = false }) => {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
