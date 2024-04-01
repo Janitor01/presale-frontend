@@ -67,12 +67,12 @@ const AnimatedText: FC<AnimatedTextProps> = ({ phrases }) => {
 
 export const VanishText: FC = () => {
   return (
-    <div className="bg-violet-700 w-full px-4 py-24 text-center md:py-36 relative overflow-hidden">
+    // Add flex, flex-col, justify-center to center content vertically, and items-center to center horizontally (if needed)
+    <div className="bg-violet-700 w-full flex flex-col justify-center items-center text-center relative overflow-hidden h-[264px] md:h-[400px]">
       <div className="image-container">
         <Image src={partyhat} alt="Party Hat" width={500} height={500} objectFit="contain" />
       </div>
       <h3 className="relative z-10 text-3xl font-medium text-violet-400 sm:text-4xl md:text-5xl lg:text-6xl">
-
         I Owe You is...
         
         <AnimatedText

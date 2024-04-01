@@ -219,3 +219,24 @@
   font-weight: 900; /* Slightly less than 'font-black' but more distinct */
   font-size: 1.1rem;
 }
+
+/* styles.module.css */
+.image-container-two {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-2%) translateY(83%);
+  width: 1500px; /* Default size */
+  height: 1500px; /* Default size */
+}
+
+@media (max-width: 600px) {
+  .image-container-two {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-25%) translateY(50%);
+    width: 1000px; /* Larger size on mobile */
+    height: 1000px; /* Larger size on mobile */
+  }
+}

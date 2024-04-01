@@ -63,9 +63,10 @@ export default function HomePage() {
          
         </section>
         <PresaleInfo />
-        
+        <h1 className='justify-center'>$IOU IS JUST A MEME. BUY AT YOUR OWN RISK</h1><br />
         
       </div>
+      
     </>
   );
 }
