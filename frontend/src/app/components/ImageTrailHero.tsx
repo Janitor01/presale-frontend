@@ -91,7 +91,7 @@ const Copy = () => {
           $IOU, short for I Owe You, is an engaging meme token presented by Office Party, exclusively designed for the Aleph Zero ecosystem. In line with the ethos of Office Party, $IOU boasts a commitment to 100% community engagement, humorously coupled with a promise of 100% zero utility.
           </p>
           <p  className='text-slate-600 text-xs'>Contract Address:<br/>
-          5GYgJ1xBPtyUwbPVnDfbg9uRGWdGrcaM6y1TaftUMoxUHQh5</p>
+          5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7</p>
           
         </div>
         
