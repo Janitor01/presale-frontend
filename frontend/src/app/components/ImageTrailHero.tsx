@@ -99,7 +99,13 @@ export const ImageTrailHero = () => {
 const Copy = () => {
   return (
     <div>
-      <div className="absolute top-0 left-0 right-0  z-[1]">Test to see if this works</div>
+      <div className="absolute top-0 left-0 right-0  z-[1]">
+      <div className="mx-auto flex items-end justify-between p-4 sm:max-w-xl md:max-w-7xl md:p-8">
+      <h1 className=" max-w-4xl text-6l font-black leading-[1.1] text-slate-900  md:text-8xl">
+        Test to see if this works
+        </h1>
+        </div>
+      </div>
     <div className="absolute bottom-0 left-0 right-0  z-[1]">
       <div className="mx-auto flex items-end justify-between p-4 sm:max-w-xl md:max-w-7xl md:p-8">
 
