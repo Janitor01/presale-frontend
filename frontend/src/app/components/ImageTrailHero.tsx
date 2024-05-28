@@ -89,7 +89,7 @@ const Copy = () => {
       <h1 className=" max-w-4xl text-6l font-black leading-[1.1] text-slate-900  md:text-8xl">
         BUY NOW
         </h1>
-        <div>
+        <div className="z-[9999]">
         <MagnetButton />
         </div>
         </div>
