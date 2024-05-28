@@ -3,7 +3,10 @@ import React, { MouseEventHandler, ReactNode, useRef, useState, useEffect } from
 import { motion } from "framer-motion";
 import { FiArrowDownCircle, FiDollarSign } from "react-icons/fi";
 import Image from "next/image";
+import MagnetButton from './magnetbutton'; 
+
 import IOULOGO from 'public/images/IOULOGO.png'
+
 
 
 export const ImageTrailHero = () => {
@@ -61,24 +64,6 @@ export const ImageTrailHero = () => {
         "/images/100 (23).png",
         "/images/24.png",
         "/images/25.png",
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         "/images/100 (24).png",
         "/images/100 (25).png",
       ]}
@@ -102,8 +87,9 @@ const Copy = () => {
       <div className="absolute top-0 left-0 right-0  z-[1]">
       <div className="mx-auto flex items-end justify-between p-4 sm:max-w-xl md:max-w-7xl md:p-8">
       <h1 className=" max-w-4xl text-6l font-black leading-[1.1] text-slate-900  md:text-8xl">
-        Test to see if this works
+        BUY NOW
         </h1>
+        <MagnetButton />
         </div>
       </div>
     <div className="absolute bottom-0 left-0 right-0  z-[1]">
