@@ -84,34 +84,33 @@ export const ImageTrailHero = () => {
 const Copy = () => {
   return (
     <div>
-      <div className="absolute top-0 left-0 right-0  z-[1]">
-      <div className="mx-auto flex items-end justify-between p-4 sm:max-w-xl md:max-w-7xl md:p-8">
-      <h1 className=" max-w-4xl text-6l font-black leading-[1.1] text-slate-900  md:text-8xl">
-        BUY NOW
-        </h1>
-        <div className="z-[9999]">
-        <MagnetButton />
-        </div>
-        </div>
-      </div>
-    <div className="absolute bottom-0 left-0 right-0  z-[1]">
-      <div className="mx-auto flex items-end justify-between p-4 sm:max-w-xl md:max-w-7xl md:p-8">
-
-        <div>
-          <h1 className=" max-w-4xl text-6xl font-black leading-[1.1] text-slate-900  md:text-8xl">
-            Office Party delivers <span className="text-indigo-500">$IOU</span>
+      <div className="absolute top-0 left-0 right-0 z-[9999]">
+        <div className="mx-auto flex items-end justify-between p-4 sm:max-w-xl md:max-w-7xl md:p-8">
+          <h1 className="max-w-4xl text-6xl font-black leading-[1.1] text-slate-900 md:text-8xl">
+            BUY NOW
           </h1>
-          <p className="max-w-xl text-slate-700 md:text-lg">
-          $IOU, short for I Owe You, is an engaging meme token presented by Office Party, exclusively designed for the Aleph Zero ecosystem. In line with the ethos of Office Party, $IOU boasts a commitment to 100% community engagement, humorously coupled with a promise of 100% zero utility.
-          </p>
-          <p  className='text-slate-600 text-xs'>Contract Address:<br/>
-          5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7</p>
-          
+          <div>
+            <MagnetButton /> 
+          </div>
         </div>
-        
-        <FiArrowDownCircle className="hidden text-8xl text-slate-500 md:block" />
       </div>
-    </div>
+      <div className="absolute bottom-0 left-0 right-0 z-[1]"> 
+        <div className="mx-auto flex items-end justify-between p-4 sm:max-w-xl md:max-w-7xl md:p-8">
+          <div>
+            <h1 className="max-w-4xl text-6xl font-black leading-[1.1] text-slate-900 md:text-8xl">
+              Office Party delivers <span className="text-indigo-500">$IOU</span>
+            </h1>
+            <p className="max-w-xl text-slate-700 md:text-lg">
+              $IOU, short for I Owe You, is an engaging meme token presented by Office Party, exclusively designed for the Aleph Zero ecosystem. In line with the ethos of Office Party, $IOU boasts a commitment to 100% community engagement, humorously coupled with a promise of 100% zero utility.
+            </p>
+            <p className='text-slate-600 text-xs'>
+              Contract Address:<br/>
+              5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7
+            </p>
+          </div>
+          <FiArrowDownCircle className="hidden text-8xl text-slate-500 md:block" />
+        </div>
+      </div>
     </div>
   );
 };
