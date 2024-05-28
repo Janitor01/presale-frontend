@@ -78,7 +78,7 @@ const MagnetButton = () => {
             fill="black"
             className="fill-black text-xl font-light uppercase opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100"
           >
-            BUY NOW BUY NOW BUY NOW
+            BUY NOW BUY NOW BUY NOW BUY NOW BUY NOW BUY NOW BUY NOW BUY NOW BUY NOW
           </textPath>
         </text>
       </motion.svg>
