@@ -14,9 +14,10 @@ export const Buy: FC = () => {
     <div className="bg-violet-700 w-full flex flex-col justify-center items-center text-center relative overflow-hidden h-[264px] md:h-[400px]">
       <MagnetButton /> {/* This is the "BUY NOW" button */}
       <div className="flex items-center mt-4">
-        <p className='text-slate-600 text-xs mr-2'>
-          CA: {contractAddress}
-        </p>
+      <p className='text-white text-xs mr-2'>
+  CA: {contractAddress}
+</p>
+
         <button onClick={handleCopyToClipboard} aria-label="Copy Contract Address" className="text-blue-500 hover:text-blue-700">
           <svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
             <g>
