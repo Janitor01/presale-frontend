@@ -8,7 +8,7 @@ import { HiOutlineExternalLink } from 'react-icons/hi'
 
 export const HomeTopBar: FC = () => {
   return (
-    <>
+    <>{/* Main Content Container
       <style jsx>{`
         .top-bar {
           position: absolute;
@@ -29,7 +29,7 @@ export const HomeTopBar: FC = () => {
       `}</style>
       <div className="top-bar">
         <ConnectButton />
-      </div>
+      </div> */}
     </>
   );
 };
