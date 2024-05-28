@@ -47,10 +47,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={cn('dark', GeistSans.variable, GeistMono.variable)}>
       <body>
-         <ClientProviders>
+         {/*<ClientProviders>*/}
           <TooltipProvider>{children}</TooltipProvider>
         {/* <ToastConfig />*/}
-        </ClientProviders>
+       {/* </ClientProviders>*/}
 
         {!!env.isProduction && <Analytics />} 
       </body>
