@@ -31,10 +31,10 @@ export default function HomePage() {
   
   return (
     <>
-      {/* Top Bar Section */}
-      <div className='relative mt-2'>
+      {/* Top Bar Section 
+      // <div className='relative mt-2'>
         <HomeTopBar />
-      </div>
+      </div>*/}
       
       {/* Main Content Container */}
       <div className="mt-10 flex flex-col items-center justify-center">
