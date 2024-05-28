@@ -98,6 +98,8 @@ export const ImageTrailHero = () => {
 
 const Copy = () => {
   return (
+    <div>
+      <div>Test to see if this works</div>
     <div className="absolute bottom-0 left-0 right-0  z-[1]">
       <div className="mx-auto flex items-end justify-between p-4 sm:max-w-xl md:max-w-7xl md:p-8">
 
@@ -115,6 +117,7 @@ const Copy = () => {
         
         <FiArrowDownCircle className="hidden text-8xl text-slate-500 md:block" />
       </div>
+    </div>
     </div>
   );
 };
