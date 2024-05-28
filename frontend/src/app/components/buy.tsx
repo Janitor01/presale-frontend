@@ -65,7 +65,7 @@ const AnimatedText: FC<AnimatedTextProps> = ({ phrases }) => {
   );
 };
 
-export const VanishText: FC = () => {
+export const Buy: FC = () => {
   return (
     // Add flex, flex-col, justify-center to center content vertically, and items-center to center horizontally (if needed)
     <div className="bg-violet-700 w-full flex flex-col justify-center items-center text-center relative overflow-hidden h-[264px] md:h-[400px]">

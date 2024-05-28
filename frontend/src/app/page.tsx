@@ -38,7 +38,7 @@ export default function HomePage() {
       </div>*/}
       
       {/* Main Content Container */}
-      <div className="mt-10 flex flex-col items-center justify-center">
+      <div className=" flex flex-col items-center justify-center">
         
         {/* Homepage Title Section */}
         <section className="w-full flex flex-wrap justify-center">
