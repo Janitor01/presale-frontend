@@ -64,7 +64,7 @@ const RoundedSlideButton2 = () => {
 
 export const Buy: FC = () => {
   return (
-    <div className="bg-violet-700 w-full flex flex-col justify-center items-center text-center relative overflow-hidden h-[264px] md:h-[400px]">
+    <div className="bg-violet-700 w-full flex flex-col justify-center items-center text-center relative overflow-hidden h-[264px] md:h-[600px]">
       <MagnetButton /> {/* This is the "BUY NOW" button */}
       <div className="flex items-center mt-4">
         <p className='text-white text-xs mr-2'>

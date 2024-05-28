@@ -12,7 +12,7 @@ import { About } from '@/components/web3/about'
 import { Logo } from '@/components/web3/logo'
 import { BugBiteContractInteractions } from '@/components/web3/bugbite-contract-interaction'
 import { HomeTopBar } from './components/home-top-bar'
-import { useInkathon, useRegisteredContract } from '@scio-labs/use-inkathon'
+// import { useInkathon, useRegisteredContract } from '@scio-labs/use-inkathon'
 import { Image } from 'lucide-react'
 import TwitterBanner from 'public/images/Twitterbanner.png'
 
@@ -20,12 +20,12 @@ import TwitterBanner from 'public/images/Twitterbanner.png'
 
 
 export default function HomePage() {
-  const { error } = useInkathon()
-  useEffect(() => {
-    if (!error) return
-    toast.error(error.message)
-  }, [error])
-  const { contract, address: contractAddress } = useRegisteredContract(ContractIds.bugbite)
+  //const { error } = useInkathon()
+ // useEffect(() => {
+ //   if (!error) return
+ //   toast.error(error.message)
+ // }, [error])
+  //const { contract, address: contractAddress } = useRegisteredContract(ContractIds.bugbite)
   
   
 
