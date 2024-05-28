@@ -73,7 +73,7 @@ const MagnetButton = () => {
             fill="black"
             className="fill-black text-lg font-light uppercase opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100"
           >
-            BUY NOW YOU PUSSY... WHAT YOU WAITING FOR?!
+            BUY NOW YOU PUSSY... WHAT YOU WAITING FOR?! YOU DEGEN ENOUGH?!
           </textPath>
         </text>
       </motion.svg>

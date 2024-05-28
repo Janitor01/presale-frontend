@@ -88,8 +88,8 @@ const Copy = () => {
       <div className="absolute top-0 left-0 right-0 z-[9999]">
         <div className="mx-auto flex flex-col items-start justify-center p-4 sm:max-w-xl md:max-w-7xl md:p-8">
           {/* Flex container changed to vertical stacking and aligned to start */}
-          <h1 className="max-w-4xl text-6xl font-black leading-[1.1] text-slate-900 md:text-8xl">
-            BUY NOW
+          <h1 className="max-w-4xl text-6s font-black leading-[1.1] text-slate-900 md:text-8xl">
+            CA: 5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7
           </h1>
           <MagnetButton /> {/* Button directly under the BUY NOW text */}
         </div>
