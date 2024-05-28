@@ -78,7 +78,7 @@ export const About: FC = () => {
             <br />
           </Question>
           <Question title="Where can I buy $IOU?">
-            <p>You can buy $IOU in <span className="text-indigo-500"><a href="https://app.common.fi">Common</a></span>, the main DEX of Aleph Zero. We were the first tradable token on the platform! Make sure to copy our contract and paste it in the DEX! SC: 5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7 </p><br />
+            <p>You can buy $IOU in <span className="text-indigo-500"><a href="https://app.common.fi">Common</a></span>, the main DEX of Aleph Zero. We were the first tradable token on the platform! Make sure to copy our contract and paste it in the DEX!</p><br />
           </Question>
           <Question title="Office Party...">
           <p>
