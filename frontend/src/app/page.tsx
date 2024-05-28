@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast'
 import { ContractIds } from '@/deployments/deployments'
 import { ImageTrailHero } from '@/app/components/ImageTrailHero'
 import { VanishText  } from '@/app/components/VanishText '
+import { Buy } from '@/app/components/buy'
 import { PresaleInfo } from '@/components/web3/presale-info'
 import { Tokenomics } from '@/components/web3/tokenomics'
 import { About } from '@/components/web3/about'
@@ -42,6 +43,7 @@ export default function HomePage() {
         {/* Homepage Title Section */}
         <section className="w-full flex flex-wrap justify-center">
         <ImageTrailHero />
+        <Buy />
           <VanishText />
           
         </section>
