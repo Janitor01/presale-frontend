@@ -1,23 +1,76 @@
 import React, { FC } from 'react';
-import MagnetButton from './magnetbutton';  // Make sure the import path is correct
+import Image from 'next/image';
+import MagnetButton from './magnetbutton'; // Ensure the path is correct
+import { FiLogIn } from "react-icons/fi"; // Import icon used in the button
+
+const contractAddress = "5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7";
+
+const handleCopyToClipboard = () => {
+  navigator.clipboard.writeText(contractAddress)
+    .then(() => alert('Contract address copied to clipboard!'))
+    .catch(err => console.error('Failed to copy text: ', err));
+};
+
+const RoundedSlideButton1 = () => {
+  return (
+    <button
+      className={`
+        relative z-0 flex items-center gap-2 overflow-hidden rounded-lg border-[1px] 
+        border-violet-300 px-4 py-2 font-semibold
+        uppercase text-violet-300 transition-all duration-500
+        
+        before:absolute before:inset-0
+        before:-z-10 before:translate-x-[150%]
+        before:translate-y-[150%] before:scale-[2.5]
+        before:rounded-[100%] before:bg-violet-300
+        before:transition-transform before:duration-1000
+        before:content-[""]
+
+        hover:scale-105 hover:text-neutral-900
+        hover:before:translate-x-[0%]
+        hover:before:translate-y-[0%]
+        active:scale-95`}
+    >
+      <FiLogIn />
+      <span>Source Code</span>
+    </button>
+  );
+};
+
+const RoundedSlideButton2 = () => {
+  return (
+    <button
+      className={`
+        relative z-0 flex items-center gap-2 overflow-hidden rounded-lg border-[1px] 
+        border-violet-300 px-4 py-2 font-semibold
+        uppercase text-violet-300 transition-all duration-500
+        
+        before:absolute before:inset-0
+        before:-z-10 before:translate-x-[150%]
+        before:translate-y-[150%] before:scale-[2.5]
+        before:rounded-[100%] before:bg-violet-300
+        before:transition-transform before:duration-1000
+        before:content-[""]
+
+        hover:scale-105 hover:text-neutral-900
+        hover:before:translate-x-[0%]
+        hover:before:translate-y-[0%]
+        active:scale-95`}
+    >
+      <FiLogIn />
+      <span>ABI</span>
+    </button>
+  );
+};
 
 export const Buy: FC = () => {
-  const contractAddress = "5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7";
-
-  const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(contractAddress)
-      .then(() => alert('Contract address copied to clipboard!'))
-      .catch(err => console.error('Failed to copy text: ', err));
-  };
-
   return (
     <div className="bg-violet-700 w-full flex flex-col justify-center items-center text-center relative overflow-hidden h-[264px] md:h-[400px]">
       <MagnetButton /> {/* This is the "BUY NOW" button */}
       <div className="flex items-center mt-4">
-      <p className='text-white text-xs mr-2'>
-  CA: {contractAddress}
-</p>
-
+        <p className='text-white text-xs mr-2'>
+          CA: {contractAddress}
+        </p>
         <button onClick={handleCopyToClipboard} aria-label="Copy Contract Address" className="text-blue-500 hover:text-blue-700">
           <svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
             <g>
@@ -25,6 +78,9 @@ export const Buy: FC = () => {
             </g>
           </svg>
         </button>
+      </div>
+      <div className="mt-4">
+        <RoundedSlideButton1 />  <RoundedSlideButton2 /> 
       </div>
     </div>
   );
