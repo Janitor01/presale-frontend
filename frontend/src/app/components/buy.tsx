@@ -4,13 +4,7 @@ import partyhat from 'public/images/partyhat.png'
 import Image from 'next/image';
 import MagnetButton from './magnetbutton'; 
 
-const ONE_SECOND = 1000;
-const WAIT_TIME = ONE_SECOND * 5;
-const STAGGER = 0.025;
 
-interface AnimatedTextProps {
-  phrases: string[];
-}
 
 const Copy = () => {
   const contractAddress = "5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7";
