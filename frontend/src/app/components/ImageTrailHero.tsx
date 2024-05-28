@@ -14,53 +14,71 @@ export const ImageTrailHero = () => {
       images={[
         "/images/0.png",
         "/images/1.png",
+        "/images/100 (1).png",
         "/images/2.png",
+        "/images/100 (2).png",
         "/images/3.png",
+        "/images/100 (3).png",
         "/images/4.png",
         "/images/5.png",
-        "/images/6.png",
-        "/images/7.png",
-        "/images/8.png",
-        "/images/9.png",
-        "/images/10.png",
-        "/images/11.png",
-        "/images/12.png",
-        "/images/13.png",
-        "/images/14.png",
-        "/images/15.png",
-        "/images/16.png",
-        "/images/17.png",
-        "/images/18.png",
-        "/images/19.png",
-        "/images/20.png",
-        "/images/21.png",
-        "/images/22.png",
-        "/images/23.png",
-        "/images/24.png",
-        "/images/25.png",
-        "/images/100 (1).png",
-        "/images/100 (2).png",
-        "/images/100 (3).png",
         "/images/100 (4).png",
         "/images/100 (5).png",
+        "/images/6.png",
         "/images/100 (6).png",
+        "/images/7.png",
         "/images/100 (7).png",
+        "/images/8.png",
+        "/images/9.png",
         "/images/100 (8).png",
         "/images/100 (9).png",
+        "/images/10.png",
+        "/images/11.png",
         "/images/100 (10).png",
         "/images/100 (11).png",
+        "/images/12.png",
+        "/images/13.png",
         "/images/100 (12).png",
         "/images/100 (13).png",
+        "/images/14.png",
+        "/images/15.png",
         "/images/100 (14).png",
         "/images/100 (15).png",
+        "/images/16.png",
         "/images/100 (16).png",
+        "/images/17.png",
         "/images/100 (17).png",
+        "/images/18.png",
         "/images/100 (18).png",
+        "/images/19.png",
         "/images/100 (19).png",
+        "/images/20.png",
         "/images/100 (20).png",
+        "/images/21.png",
         "/images/100 (21).png",
+        "/images/22.png",
         "/images/100 (22).png",
+        "/images/23.png",
         "/images/100 (23).png",
+        "/images/24.png",
+        "/images/25.png",
+        
+        
+        
+        
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         "/images/100 (24).png",
         "/images/100 (25).png",
       ]}
