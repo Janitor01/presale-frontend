@@ -123,9 +123,7 @@ const Copy = () => {
               Contract Address:<br/>
               {contractAddress}
             </p>
-            <button onClick={handleCopyToClipboard} className="text-xs text-blue-500 hover:text-blue-700">
-              Copy Address
-            </button>
+            
           </div>
           <FiArrowDownCircle className="hidden text-8xl text-slate-500 md:block" />
         </div>

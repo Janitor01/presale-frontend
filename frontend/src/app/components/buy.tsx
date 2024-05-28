@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, FC } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import partyhat from 'public/images/partyhat.png'
 import Image from 'next/image';
+import MagnetButton from './magnetbutton'; 
 
 const ONE_SECOND = 1000;
 const WAIT_TIME = ONE_SECOND * 5;
@@ -11,59 +12,39 @@ interface AnimatedTextProps {
   phrases: string[];
 }
 
-const AnimatedText: FC<AnimatedTextProps> = ({ phrases }) => {
-  const countRef = useRef<number>(0);
-  const [active, setActive] = useState<number>(0);
+const Copy = () => {
+  const contractAddress = "5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7";
 
-  useEffect(() => {
-    const intervalRef = setInterval(() => {
-      setActive((prevActive) => (prevActive + 1) % phrases.length);
-    }, WAIT_TIME);
-
-    return () => clearInterval(intervalRef);
-  }, [phrases.length]);
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(contractAddress)
+      .then(() => alert('Contract address copied to clipboard!'))
+      .catch(err => console.error('Failed to copy text: ', err));
+  };
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 md:gap-2.5 lg:gap-4">
-      <AnimatePresence mode="popLayout">
-        {phrases[active].split(" ").map((word, wordIndex) => {
-          if (wordIndex === 0) {
-            countRef.current = 0;
-          }
-
-          return (
-            <motion.div key={word} className="whitespace-nowrap text-violet-50">
-              {word.split("").map((letter, letterIndex) => {
-                const delay = (countRef.current++) * STAGGER;
-
-                return (
-                  <motion.span
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0 }}
-                    transition={{
-                      delay: delay,
-                      type: "spring",
-                      damping: 12,
-                      stiffness: 200,
-                    }}
-                    className="inline-block"
-                    style={{
-                      textShadow: '2px 2px 8px rgba(0,0,0,1)'
-                    }}
-                    key={letterIndex}
-                  >
-                    {letter}
-                  </motion.span>
-                );
-              })}
-            </motion.div>
-          );
-        })}
-      </AnimatePresence>
+    <div>
+      <div className="absolute top-0 left-0 right-0 z-[9999]">
+        <div className="mx-auto flex flex-col items-start justify-center p-4 sm:max-w-xl md:max-w-7xl md:p-8">
+          <MagnetButton /> {/* Button directly under the BUY NOW text */}
+          <div className="flex items-center">
+            <p className='text-slate-600 text-xs mr-2'>
+              CA: {contractAddress}
+            </p>
+            <button onClick={handleCopyToClipboard} aria-label="Copy Contract Address" className="text-blue-500 hover:text-blue-700">
+              <svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                <g>
+                  <path fill="#000000" d="M 4 2 C 2.895 2 2 2.895 2 4 L 2 18 L 4 18 L 4 4 L 18 4 L 18 2 L 4 2 z M 8 6 C 6.895 6 6 6.895 6 8 L 6 20 C 6 21.105 6.895 22 8 22 L 20 22 C 21.105 22 22 21.105 22 20 L 22 8 C 22 6.895 21.105 6 20 6 L 8 6 z M 8 8 L 20 8 L 20 20 L 8 20 L 8 8 z" />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 };
+
 
 export const Buy: FC = () => {
   return (
@@ -72,24 +53,7 @@ export const Buy: FC = () => {
       <div className="image-container">
         <Image src={partyhat} alt="Party Hat" width={500} height={500} objectFit="contain" />
       </div>
-      <h3 className="relative z-10 text-3xl font-medium text-violet-400 sm:text-4xl md:text-5xl lg:text-6xl">
-        I Owe You is...
-        
-        <AnimatedText
-          phrases={[
-            "100% No Utility",
-            "All In For Community",
-            "Determined By Perception",
-            "Just For Fun",
-            "Purely a MEME",
-            "You",
-            "Nothing",
-            "Everything",
-            "Worthless",
-            "Priceless",
-          ]}
-        />
-      </h3>
+   
     </div>
   );
 };
