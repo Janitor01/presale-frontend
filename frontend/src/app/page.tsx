@@ -20,12 +20,12 @@ import TwitterBanner from 'public/images/Twitterbanner.png'
 
 
 export default function HomePage() {
-  const { error } = useInkathon()
+ {/* const { error } = useInkathon()
   useEffect(() => {
     if (!error) return
     toast.error(error.message)
   }, [error])
-  const { contract, address: contractAddress } = useRegisteredContract(ContractIds.bugbite)
+  const { contract, address: contractAddress } = useRegisteredContract(ContractIds.bugbite)*/}
   
   
 
