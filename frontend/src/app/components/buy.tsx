@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import MagnetButton from './magnetbutton'; // Ensure the path is correct
 import { FiLogIn } from "react-icons/fi"; // Import icon used in the button
 import Image from 'next/image'
-import liquidity from 'public/images/liquidity.png'
+import liquidity from 'public/images/liqudity.png'
 
 const contractAddress = "5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7";
 
