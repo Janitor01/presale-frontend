@@ -84,8 +84,9 @@ export const Buy: FC = () => {
         <RoundedSlideButton1 />
         <RoundedSlideButton2 />
       </div>
-      <div className="absolute z-99999 top-[80%] mt-2"> {/* Image positioned to overlap and be slightly lower */}
+      <div className="absolute z-20 top-[80%] mt-2"> {/* Image positioned to overlap and be slightly lower */}
   <Image 
+  z-index="9999"
     src={liquidity} 
     alt="Liquidity Image" 
     width={640} 
