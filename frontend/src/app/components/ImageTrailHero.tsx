@@ -83,14 +83,24 @@ export const ImageTrailHero = () => {
 
 
 const Copy = () => {
+  const contractAddress = "5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7";
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(contractAddress)
+      .then(() => alert('Contract address copied to clipboard!'))
+      .catch(err => console.error('Failed to copy text: ', err));
+  };
+
   return (
     <div>
       <div className="absolute top-0 left-0 right-0 z-[9999]">
         <div className="mx-auto flex flex-col items-start justify-center p-4 sm:max-w-xl md:max-w-7xl md:p-8">
-          {/* Flex container changed to vertical stacking and aligned to start */}
-          <h1 className="max-w-4xl text-6s font-black leading-[1.1] text-slate-900 md:text-8xl">
-            CA: 5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7
-          </h1>
+          <p>
+            CA: {contractAddress}
+          </p>
+          <button onClick={handleCopyToClipboard} className="mt-2 text-sm text-blue-500 hover:text-blue-700">
+            Copy Contract Address
+          </button>
           <MagnetButton /> {/* Button directly under the BUY NOW text */}
         </div>
       </div>
@@ -105,8 +115,11 @@ const Copy = () => {
             </p>
             <p className='text-slate-600 text-xs'>
               Contract Address:<br/>
-              5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7
+              {contractAddress}
             </p>
+            <button onClick={handleCopyToClipboard} className="text-xs text-blue-500 hover:text-blue-700">
+              Copy Address
+            </button>
           </div>
           <FiArrowDownCircle className="hidden text-8xl text-slate-500 md:block" />
         </div>
