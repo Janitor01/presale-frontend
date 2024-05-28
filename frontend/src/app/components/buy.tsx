@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import MagnetButton from './magnetbutton'; // Ensure the path is correct
 import { FiLogIn } from "react-icons/fi"; // Import icon used in the button
+import Image from 'next/image'
+import liquidity from 'public/images/liquidity.png'
 
 const contractAddress = "5GCubYQbm9x6TQbthbWpUVrgEibXMDXhgisw8DFYCpPJQ5f7";
 
@@ -81,6 +83,9 @@ export const Buy: FC = () => {
       <div className="flex mt-4 space-x-4"> {/* Ensure this div is correctly using flex and space-x-4 */}
         <RoundedSlideButton1 />
         <RoundedSlideButton2 />
+      </div>
+      <div className="absolute z-20 top-[50%] mt-2"> {/* Image positioned to overlap and be slightly lower */}
+        <Image src={liquidity} alt="liquidity" layout="fixed" />
       </div>
     </div>
   );
