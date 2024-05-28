@@ -1,16 +1,12 @@
 'use client'
 
-import { FC } from 'react'
+import React, { FC } from 'react'
 import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
 import 'chart.js/auto';
 import crown from 'public/images/crown.png'
 
 
-
-
-
-import React, { FC } from 'react';
 
 export const Logo: FC = () => {
   return (
