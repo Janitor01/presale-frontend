@@ -84,9 +84,15 @@ export const Buy: FC = () => {
         <RoundedSlideButton1 />
         <RoundedSlideButton2 />
       </div>
-      <div className="absolute z-20 top-[50%] mt-2"> {/* Image positioned to overlap and be slightly lower */}
-        <Image src={liquidity} alt="liquidity" layout="fixed" />
-      </div>
+      <div className="absolute z-99999 top-[50%] mt-2"> {/* Image positioned to overlap and be slightly lower */}
+  <Image 
+    src={liquidity} 
+    alt="Liquidity Image" 
+    width={640} 
+    height={142} 
+    layout="fixed"
+  />
+</div>
     </div>
   );
 };
