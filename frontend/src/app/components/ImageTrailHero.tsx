@@ -95,13 +95,14 @@ const Copy = () => {
     <div>
       <div className="absolute top-0 left-0 right-0 z-[9999]">
         <div className="mx-auto flex flex-col items-start justify-center p-4 sm:max-w-xl md:max-w-7xl md:p-8">
-          <p>
+        
+          <MagnetButton /> {/* Button directly under the BUY NOW text */}
+          <p className='text-slate-600 text-xs'>
             CA: {contractAddress}
           </p>
           <button onClick={handleCopyToClipboard} className="mt-2 text-sm text-blue-500 hover:text-blue-700">
             Copy Contract Address
           </button>
-          <MagnetButton /> {/* Button directly under the BUY NOW text */}
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 z-[1]">
